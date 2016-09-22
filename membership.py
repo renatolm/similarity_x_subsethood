@@ -1,6 +1,6 @@
 from __future__ import division
 
-def triang(ini, topo, fim, entrada):
+def triang(entrada, ini, topo, fim):
 	if (entrada > ini) and (entrada < topo):
 		return (entrada / (topo - ini)) - (ini / (topo - ini))
 	elif (entrada > topo) and (entrada < fim):
@@ -10,7 +10,7 @@ def triang(ini, topo, fim, entrada):
 	else:
 		return 0
 
-def trap(ini, topo1, topo2, fim, entrada):
+def trap(entrada, ini, topo1, topo2, fim):
 	if (entrada > ini) and (entrada < topo1):
 		return (entrada / (topo1 - ini)) - (ini / (topo1 - ini))
 	elif (entrada > topo2) and (entrada < fim):
