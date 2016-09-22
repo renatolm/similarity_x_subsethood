@@ -5,7 +5,7 @@ import scipy.integrate as integrate
 
 # Calcula a similaridade de Jaccard
 # A similaridade eh dada por Integral(min(antecedente,entrada))/Integral(max(antecedente,entrada))
-# O intervalo de integração é dividido em tuplas e armazenado no array intervalos
+# O intervalo de integracao eh dividido em tuplas e armazenado no array intervalos
 # A estrutura de cada tupla eh a seguinte: [funcao, inicio, fim]
 # Onde funcao indica quem tem o menor valor em modulo no intervalo (antecedente ou entrada)
 
@@ -66,16 +66,16 @@ def ativa_regra(iniRegra, topoRegra, fimRegra, iniEntrada, topoEntrada, fimEntra
 	# Integra os intervalos definidos para o numerador
 	for intervalo in intervalosNum:
 		if intervalo[0] == 'antecedente':
-			numerador = numerador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniRegra,topoRegra,fimRegra))
+			numerador = numerador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniRegra,topoRegra,fimRegra))[0]
 		else:
-			numerador = numerador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniEntrada,topoEntrada,fimEntrada))
+			numerador = numerador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniEntrada,topoEntrada,fimEntrada))[0]
 
 	# Integra os intervalos definidos para o denominador
 	for intervalo in intervalosDen:
 		if intervalo[0] == 'antecedente':
-			denominador = denominador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniRegra,topoRegra,fimRegra))
+			denominador = denominador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniRegra,topoRegra,fimRegra))[0]
 		else:
-			denominador = denominador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniEntrada,topoEntrada,fimEntrada))
+			denominador = denominador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniEntrada,topoEntrada,fimEntrada))[0]
 
 	# Calcula o grau de similaridade
 	grau = numerador / denominador
@@ -138,16 +138,16 @@ def ativa_regra_trap(iniRegra, topoRegra1, topoRegra2, fimRegra, iniEntrada, top
 	# Integra os intervalos definidos para o numerador
 	for intervalo in intervalosNum:
 		if intervalo[0] == 'antecedente':
-			numerador = numerador + integrate.quad(membership.trap, intervalo[1], intervalo[2], args=(iniRegra,topoRegra1,topoRegra2,fimRegra))
+			numerador = numerador + integrate.quad(membership.trap, intervalo[1], intervalo[2], args=(iniRegra,topoRegra1,topoRegra2,fimRegra))[0]
 		else:
-			numerador = numerador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniEntrada,topoEntrada,fimEntrada))
+			numerador = numerador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniEntrada,topoEntrada,fimEntrada))[0]
 
 	# Integra os intervalos definidos para o denominador
 	for intervalo in intervalosDen:
 		if intervalo[0] == 'antecedente':
-			denominador = denominador + integrate.quad(membership.trap, intervalo[1], intervalo[2], args=(iniRegra,topoRegra1,topoRegra2,fimRegra))
+			denominador = denominador + integrate.quad(membership.trap, intervalo[1], intervalo[2], args=(iniRegra,topoRegra1,topoRegra2,fimRegra))[0]
 		else:
-			denominador = denominador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniEntrada,topoEntrada,fimEntrada))
+			denominador = denominador + integrate.quad(membership.triang, intervalo[1], intervalo[2], args=(iniEntrada,topoEntrada,fimEntrada))[0]
 
 	# Calcula o grau de similaridade
 	grau = numerador / denominador
