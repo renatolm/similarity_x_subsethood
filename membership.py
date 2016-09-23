@@ -23,7 +23,7 @@ def trap(entrada, ini, topo1, topo2, fim):
 
 def alpha_cut_triang(alpha, ini, topo, fim):
 	corte = []
-	for i in np.arange(ini, fim, 0.01):
+	for i in np.arange(ini, fim, 0.1):
 		if triang(i, ini, topo, fim) >= alpha:
 			corte.append(i)
 
@@ -31,7 +31,7 @@ def alpha_cut_triang(alpha, ini, topo, fim):
 
 def alpha_cut_trap(alpha, ini, topo1, topo2, fim):
 	corte = []
-	for i in np.arange(ini, fim, 0.01):
+	for i in np.arange(ini, fim, 0.1):
 		if trap(i, ini, topo1, topo2, fim) >= alpha:
 			corte.append(i)
 
