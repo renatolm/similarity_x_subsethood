@@ -1,4 +1,5 @@
 from __future__ import division
+import numpy as np
 
 def triang(entrada, ini, topo, fim):
 	if (entrada > ini) and (entrada < topo):
@@ -19,3 +20,19 @@ def trap(entrada, ini, topo1, topo2, fim):
 		return 1
 	else:
 		return 0
+
+def alpha_cut_triang(alpha, ini, topo, fim):
+	corte = []
+	for i in np.arange(ini, fim, 0.01):
+		if triang(i, ini, topo, fim) >= alpha:
+			corte.append(i)
+
+	return corte
+
+def alpha_cut_trap(alpha, ini, topo1, topo2, fim):
+	corte = []
+	for i in np.arange(ini, fim, 0.01):
+		if trap(i, ini, topo1, topo2, fim) >= alpha:
+			corte.append(i)
+
+	return corte
