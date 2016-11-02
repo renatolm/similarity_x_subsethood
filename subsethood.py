@@ -27,7 +27,7 @@ def ativa_regra(iniRegra, topoRegra, fimRegra, iniEntrada, topoEntrada, fimEntra
 		intervalo = ['antecedente',max(iniEntrada,iniRegra),max(iniEntrada,iniRegra)]
 
 	#Monta os intervalos de integracao do numerador em tuplas no array intervalosNum
-	for i in np.arange(max(iniEntrada,iniRegra), min(fimEntrada,fimRegra), 0.01):		
+	for i in np.arange(max(iniEntrada,iniRegra), min(fimEntrada,fimRegra), 0.001):		
 		if (membership.triang(i, iniRegra, topoRegra, fimRegra) >= membership.triang(i, iniEntrada, topoEntrada, fimEntrada)) and (intervalo[0] == 'entrada'):
 			intervalo[2] = i
 		elif (membership.triang(i, iniRegra, topoRegra, fimRegra) >= membership.triang(i, iniEntrada, topoEntrada, fimEntrada)) and (intervalo[0] == 'antecedente'):
@@ -100,7 +100,7 @@ def ativa_regra_trap(iniRegra, topoRegra1, topoRegra2, fimRegra, iniEntrada, top
 		intervalo = ['antecedente',max(iniEntrada,iniRegra),max(iniEntrada,iniRegra)]
 
 	#Monta os intervalos de integracao do numerador em tuplas no array intervalosNum
-	for i in np.arange(max(iniEntrada,iniRegra), min(fimEntrada,fimRegra), 0.01):		
+	for i in np.arange(max(iniEntrada,iniRegra), min(fimEntrada,fimRegra), 0.001):		
 		if (membership.trap(i, iniRegra, topoRegra1, topoRegra2, fimRegra) >= membership.triang(i, iniEntrada, topoEntrada, fimEntrada)) and (intervalo[0] == 'entrada'):
 			intervalo[2] = i
 		elif (membership.trap(i, iniRegra, topoRegra1, topoRegra2, fimRegra) >= membership.triang(i, iniEntrada, topoEntrada, fimEntrada)) and (intervalo[0] == 'antecedente'):
