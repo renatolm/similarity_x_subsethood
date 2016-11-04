@@ -1,0 +1,755 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc} 
+%\usepackage[brazil]{babel}
+%Configuração de página.
+%\usepackage[lmargin=2.5cm, rmargin=1.5cm, tmargin=2.5cm, bmargin=1.5cm]{geometry}
+\renewcommand{\baselinestretch}{1.5}
+\usepackage[bottom=2cm,top=3cm,left=3cm,right=2cm]{geometry} %margens nas normas da ABNT
+%\usepackage{setspace} %para poder mudar o espaçamento entre as linhas
+%\usepackage{indentfirst} %pra que o primeiro parágrafo tenha o espaço certo
+\usepackage{amssymb,amsfonts,newlfont,indentfirst,subfigure}
+%\usepackage[dvips]{graphicx} %ajuda a pôr gráficos
+\usepackage[pdftex]{graphicx}
+\usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{enumerate} %para fazer itens
+\usepackage{array} %para fazer tabelas
+\usepackage{amsmath,amsfonts,amssymb} %letras estilo matemático
+%\usepackage{fancyhdr} %pra ajeitar o layout das páginas
+\usepackage{amsthm} %para mudar o estilo dos teoremas
+\usepackage{listings}
+\usepackage{caption} %para pôr legendas
+%\usepackage{subcaption} %para pôr legendas em subfiguras
+\usepackage{calligra}
+\usepackage{xcolor}
+
+\newtheorem{teo}{Teorema}
+\newtheorem{lema}{Lema}
+
+\theoremstyle{remark}
+\newtheorem{exe}{Exemplo}
+\newtheorem{defi}{Definição}
+\newtheorem{obs}{Observação}
+
+\hyphenation{com-pri-men-to} %algumas palavras são desconhecidas do Latex, mas você força ele a separá-las corretamente
+
+\begin{document}  
+%\onehalfspacing
+\thispagestyle{empty}
+{\large
+
+%%%%%%%%%%% Página 1 - Capa
+
+\begin{center}
+\textbf{UNIVERSIDADE ESTADUAL DE CAMPINAS}
+\end{center}
+
+\vspace{84pt}
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{RENATO LOPES MOURA} & \textbf{RA163050} \\
+\end{tabular}
+\end{center}
+
+\vspace{75pt}
+\begin{center}
+{\Large\textbf{Estudo sobre Inferência Fuzzy baseada em medidas de subsethood}}
+\end{center}
+
+\vfill
+
+\begin{center}
+\textbf{CAMPINAS} \\
+\textbf{2016}
+\end{center}}
+
+%%%%%%%%%%% 
+
+\newpage 
+
+\section{Definições}
+
+\begin{defi}
+ Seja uma função $S:\mathcal{F}(X)x\mathcal{F}(X) \rightarrow [0,1]$. $S(A,B)$ é uma medida de subsethood se para $A,B,C \in \mathcal{F}(X)$ temos:
+ \begin{enumerate}
+ \item $S(A,B)=1 \Leftrightarrow A \subseteq B$ 
+ \item $S(X,\emptyset)=0$ 
+ \item Se $A \subseteq B \subseteq C$, então $S(C,A) \leq S(B,A)$ e $S(C,A) \leq S(C,B)$
+\end{enumerate}
+\end{defi}
+
+\begin{defi}
+ A medida de subsethood de Kosko é definida da seguinte forma:
+ \begin{center}
+ $S(A,B)=\frac{\int_{x \in X}min(\mu_A(x),\mu_B(x))}{\int_{x \in X}\mu_A(x)}$ 
+ \end{center}
+\end{defi}
+
+\begin{defi}
+ A medida de subsethood de Willmott é definida da seguinte forma:
+\begin{center}
+ $S(A,B)=\frac{\int_{x \in X}\mu_B(x)}{\int_{x \in X}max(\mu_A(x),\mu_B(x))}$
+\end{center}
+\end{defi}
+
+\begin{defi}
+ As medidas de subsethood $S_p^{\cap}$(meet) e $S_p^{\cup}$(join) são definidas da seguinte forma:
+\begin{center}
+ $S_p^{\cap}(A,B)=I_p(v_p(A),v_p(A \cap B))$,
+ \\$S_p^{\cup}(A,B)=I_p(v_p(A \cup B),v_p(B))$
+\end{center}
+ Onde $I_p$ denota a implicação de Goguen e $v_p$ é uma função $\mathcal{F}(X) \rightarrow [0,1]$ definida por:
+\begin{center}
+ $v_p=\sum_{i=1}^{k}\frac{1-cos(\pi[\mu_C(x^i)]^p)}{k}, \quad X=\{x^1,...,x^k\}$
+\end{center}
+\end{defi}
+
+%\section{Endometriose} \label{sec_endo}
+%
+%Endometriose é uma patologia que atinge cerca de 10$\%$ das mulheres em período fértil ao redor do mundo, sendo a mais comum condição ginecológica benigna \cite{vigano}. Segundo a teoria de Sampson, essa doença se dá devido ao 
+%refluxo de sangue durante a menstruação \cite{vigano}, levando células do endométrio para fora da cavidade do útero, ver Figura \ref{fig:endo}. Elas podem se alojar nos ovários, na bexiga, nos ligamentos uterinos, nos intestinos, no 
+%peritônio da pelve, dentre outras regiões \cite{febrasgo}.
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[scale=0.6]{endometriose.png}
+%        \caption{Sistema reprodutor feminino dotado de endometriose. FONTE: Instituto CRISPI de Cirurgias Minimamente Invasivas}
+%        \label{fig:endo}
+%\end{figure}
+%
+%Ainda restam diversas questões acerca de como ela se instala no corpo feminino e quais são seus fatores de risco \cite{kouhung}. Seus sintomas são diversos, sendo comumente relatados a {\it dismenorreia}, conhecida como cólica 
+%menstrual, a {\it dispareunia}, que é a dor durante as relações sexuais, e dores na região pélvica em geral, não necessariamente durante o período menstrual \cite{art1}, além de ser usualmente citado pelas mulheres, fadiga como um 
+%dos sintomas \cite{ballweg}. Tais dores podem atrapalhar diversos aspectos da vida da mulher, desde as tarefas domésticas, passando pelo apetite, sono, atividades físicas, sociais, relações sexuais e, inclusive, o desempenho no 
+%trabalho, já que, em alguns casos, a dor se torna incapacitante \cite{fourquet}.
+%
+%Muito embora seja uma patologia que se manifesta cedo nas mulheres, o diagnóstico demora até 8 anos para ser feito \cite{fourquet}, e para tanto, faz-se necessário diagnósticos por imagem e exames bastante invasivos, como 
+%a laparoscopia ou a laparotomia. Dessa forma, desenvolver e implementar métodos que possam auxiliar o médico quanto a tomada de decisão a cerca das chances de suas pacientes terem endometriose contribui para que tais mulheres 
+%possam ter suas dores tratadas sem tanta espera, e não sejam submetidas a procedimentos invasivos desnecessários.
+%
+%Para tanto, será aqui descrito, primeiramente, o método de Mamdani, tradicionalmente utilizado em inferências fuzzy.
+%
+%\section{Método de Mamdani} \label{sec_mam}
+%
+%O método de inferência de Mamdani \cite{laecio} é um modelo fuzzy linguístico composto de regras fuzzy do tipo:
+%\begin{equation} 
+%R_i: \text{Se } x_1 \text{ é } A_1, x_2\text{ é }A_2,\ldots, x_n\text{ é }A_n,\text{ então }y\text{ é }B_i
+%\end{equation}
+%em que cada regra é representada por uma relação fuzzy $R_i$, os antecedentes representados por $A_i$ e os consequentes por $B_i$.
+%
+%Nesse método, a conjunção ``e'' entre os antecedentes é traduzida usando-se a t-norma do mínimo. A estrutura condicional ``se $\ldots$ então'' é representada, também, pela t-norma do mínimo, que é uma forma de traduzir o produto 
+%cartesiano entre os conjuntos universo dos antecedentes e dos consequentes da base de regras. E as regras são agregadas em uma base de regras usando-se a s-norma do máximo.
+%
+%O processo de inferência é feito através de uma composição entre os antecedentes e a base de regras. No método de Mamdani a composição usada é a sup-min.
+%
+%Simbolicamente:
+%\begin{eqnarray}
+%& & P(x_1,\ldots,x_n)=\min \{A_1(x_1),\ldots,A_n(x_n)\} \nonumber \\
+%& & R_i(x_1,\ldots,x_n,y)=\min\{A_1(x_1),\ldots,A_n(x_n),B_i(y)\}\text{, para }i=1, \ldots, N \nonumber \\
+%& & B=P\circ \displaystyle \bigcup^{N}_{i=1} R_i
+%\label{eq:eq1}
+%\end{eqnarray}
+%em que a função de pertinência $B(y)$ é dada por:
+%\small
+%\begin{eqnarray*}
+%B(y) & = & \displaystyle \sup_{x,y}\{(P(x_1,\ldots,x_n)\wedge [R_1(x_1,\ldots,x_n,y)\vee\ldots\vee R_N(x_1,\ldots,x_n,y)]\} \\
+%& = & \displaystyle \sup_{x,y}\{[(P(x_1,\ldots,x_n)\wedge R_1(x_1,\ldots,x_n,y)\vee\ldots\vee [P(x_1,\ldots,x_n)\wedge R_N(x_1,\ldots,x_n,y)]\} \\
+%& = & \max\{\displaystyle \sup_{x,y}[(P(x_1,\ldots,x_n)\wedge R_1(x_1,\ldots,x_n,y)],\ldots,\displaystyle\sup_{x,y}[(P(x_1,\ldots,x_n)\wedge R_N(x_1,\ldots,x_n,y)]\}.
+%\end{eqnarray*}
+%
+%\normalsize
+%
+%Pode-se definir uma função $B_i(y)$ tal que
+%$$B'_i(y)=\displaystyle \sup_{x,y}[P(x_1,\ldots,x_n)\wedge R_i(x_1,\ldots,x_n,y)].$$
+%
+%O que permite reescrever a função de pertinência dos consequentes como
+%
+%\begin{equation}
+%B(y)=\displaystyle\bigcup^{N}_{i=1}(P\circ R_i)=\bigcup^N_{i=1}B'_i
+%\label{eq:eq2}
+%\end{equation}
+%
+%Assim, comparando (\ref{eq:eq1}) e (\ref{eq:eq2}) temos
+%
+%$$B(y)=P\circ \displaystyle \bigcup^{N}_{i=1} R_i=\bigcup^{N}_{i=1}(P\circ R_i)=\bigcup^N_{i=1}B'_i.$$
+%
+%O que permite que as regras sejam processadas em paralelo e, se feitas em {\it hardware}, o número de regras não afeta o tempo de processamento \cite{gomide}. Isso se deve ao fato que ao invés de agregar as regras de modo a produzir 
+%uma relação $R$ para somente depois efetuar a inferência, pode-se compor os antecedentes com cada regra para que então se faça a agregação final.
+%
+%Outro método de inferência fuzzy, baseado em uma medida de inclusão advinda da teoria de reticulados, será abordado na seção a seguir.
+%
+%\section{Método baseado em medidas de inclusão} \label{sec_incl}
+%
+%Uma parte fundamental de um Sistema Baseado em Regras Fuzzy (SBRF) é a determinação da ativação ou não de uma regra dada uma certa entrada. No método de Mamdani isto é feito através do mínimo entre as entradas e cada um dos 
+%antecedentes \cite{gomide}, devido à composição. Assim, se a interseção entre uma entrada e um antecedente é vazia, o mínimo entre elas será 0 e, consequentemente, a regra não é ativada.
+%
+%
+%Um outro método de inferência fuzzy envolve a ativação das regras segundo medidas de inclusão. Isso possibilita, dependendo da medida utilizada, ativar uma regra mesmo que a interseção entre ela e o antecedente seja vazia 
+%\cite{vassilis}.
+%
+%
+%Desta forma, o método apresentado em \cite{vassilis} apresenta algumas vantagens em relação ao método clássico de Mamdani:
+%\begin{enumerate}
+%\item Adequação ao uso de bases de regras esparsas; e
+%\item Possibilidade de inclusão de não-linearidades globais através da \textit{função de comprimento} conforme a Definição \ref{fun} a seguir.
+%\end{enumerate}
+%
+%
+%
+%%-Reticulado
+%\begin{defi}
+% Um {\it reticulado} é um par $(X,\leq)$ composto de um conjunto e uma {\it ordem parcial} sobre ele, tal que para quaisquer dois elementos $x,y \in X$,
+%existem um {\it supremo} $x \vee y$ e um {\it ínfimo} $x \wedge y$.
+%\end{defi}
+%
+%%-Medida de inclusão
+%\begin{defi}
+% Uma {\it medida de inclusão} é uma função $\sigma:X \times X \rightarrow [0,1]$ em um reticulado $(X,\trianglelefteq)$, sendo $\trianglelefteq$ a ordem parcial, com as seguintes propriedades:
+%\begin{enumerate}
+% \item $\sigma(x,x) = 1$
+% \item $x \ntrianglelefteq y \Rightarrow \sigma(x,y) < 1$
+% \item $y \trianglelefteq z \Rightarrow \sigma(x,y) \leq \sigma(x,z)$
+%\end{enumerate}
+%\label{medinclusao}
+%\end{defi}
+%
+%%-Medida de comprimento 
+%%Faltou definir o espaço I e os conjuntos O e I(itálico) e os elementos o e i de um conjunto A no espaço I
+%\begin{defi}
+% Uma {\it função de comprimento} é uma função $V:X \rightarrow [0,\infty)$ da forma:
+% 
+%$V(A) =
+%  \begin{cases}
+%    0       & \quad \text{se, e somente se, } A = \emptyset\\
+%    v(\theta(a_1)) + v(a_2)  & \quad \text{se, e somente se, } A = [a_1,a_2] \neq \emptyset\\
+%  \end{cases}$ em que
+%
+%\begin{itemize}
+%\item $v:L \rightarrow [0,\infty)$ é uma função estritamente crescente que satisfaz $v(o) = 0$ e $v(i) <\infty$, sendo $L=\overline{\mathbb{R}}=\mathbb{R}\cup\{-\infty,\infty\}$ ou $L=[a,b]\subseteq \overline{\mathbb{R}}$ ou 
+%$L=\{x_1,x_2,\ldots,x_N\}\subseteq\overline{\mathbb{R}}$, e $o=\inf(L)$, $i=\sup(L)$; e
+%\item $\theta:L \rightarrow L$ é uma função estritamente decrescente.
+%\end{itemize}
+%\label{fun}
+%\end{defi}
+%
+%%-Medidas subsethood-interseção e subsethood-união (caso crisp)
+%\begin{defi}
+% As funções $\sigma_\cap^V:X\times X \rightarrow [0,1]$ e $\sigma_\cup^V:X\times X \rightarrow [0,1]$ são definidas da seguinte forma, para todo $A, \ B \in X$:
+% \begin{align*}
+% & \sigma_\cap^V (A,B) =
+%  \begin{cases}
+%    1       & \quad \text{se, e somente se, } A = \emptyset\\
+%    \displaystyle\frac{V(A\cap B)}{V(A)}  & \quad \text{se, e somente se, } A \neq \emptyset\\
+%  \end{cases} \\
+%& \sigma_\cup^V (A,B) =
+%  \begin{cases}
+%    1       & \quad \text{se, e somente se, } A\cup B = \emptyset\\
+%    \displaystyle\frac{V(B)}{V(A\cup B)}  & \quad \text{se, e somente se, } A\cup B \neq \emptyset\\
+%  \end{cases}
+%\end{align*}
+%
+%\end{defi}
+%
+%Considerando $\mathcal{F}$ o conjunto de números fuzzy, temos a seguinte definição.
+%
+%\begin{defi}
+% As funções $\sigma_\curlywedge^V:\mathcal{F}\times \mathcal{F} \rightarrow [0,1]$ e $\sigma_\curlyvee^V:\mathcal{F}\times \mathcal{F} \rightarrow [0,1]$ são definidas, para todo $F,\ G \in \mathcal{F}$, da seguinte forma:
+%$$\displaystyle\sigma_\curlywedge^V(F,G) = \int_0^1\sigma_\cap^V (F(h),G(h)) dh, \text{ e} $$
+%
+%$$\displaystyle\sigma_\curlyvee^V(F,G) = \int_0^1\sigma_\cup^V (F(h),G(h)) dh.$$
+%sendo $F(h)=\{x \in X; \ m_F(x)\geq h\}$, o $h$-nível, com $m_F$ a função de pertinência de $F$.
+%\end{defi}
+%
+%\
+%
+%\begin{obs}
+%Neste trabalho, para fins comparativos, será investigada apenas a função $\sigma_\curlywedge^V$ dada a natureza da base de regras -- não esparsa -- e a proximidade dos seus resultados com os obtidos pelo método clássico de Mamdani.
+%\end{obs}
+%
+%\begin{teo}
+% A função $\sigma_\curlywedge^V$ é uma medida de inclusão.
+%\end{teo}
+%\noindent \textit{Demonstração:}
+%Verificando as propriedades de medidas de inclusão conforme a Definição \ref{medinclusao}:
+%\begin{enumerate}
+%\item $\sigma(x,x) = 1$
+%\begin{eqnarray*}
+% \displaystyle \sigma_\curlywedge^V(X,X)& = & \int_0^1\sigma_\cap^V (X(h),X(h)) dh = \int_0^1\frac{V(X(h)\cap X(h))}{V(X(h))} dh \\
+% & = &\displaystyle\int_0^1\frac{V(X(h))}{V(X(h))} dh =\int_0^{1}1 dh =1
+%\end{eqnarray*}
+%
+%\item $x \ntrianglelefteq y \Rightarrow \sigma(x,y) < 1$
+%\begin{eqnarray*}
+% \displaystyle X(h)\nsubseteq Y(h) \Rightarrow \exists \ x_0 \in X(h) \ | \ x_0 \notin X(h)\cap Y(h)
+%\end{eqnarray*}
+%Sem perda de generalidade, podemos supor que
+%$\begin{cases}
+%\displaystyle X(h)\cap Y(h) = [x_1,x_2]\\
+%\displaystyle X(h) = [x_1,x_0]
+%\end{cases}$,
+%
+%\noindent em que  $x_0 >x_2$, logo $v(x_0)>v(x_2)$. 
+%
+%Portanto, $v(\theta(x_1))+v(x_0) > v(\theta(x_1))+v(x_2)$
+%\begin{eqnarray*}
+% & \Rightarrow &\displaystyle V(X(h)) > V(X(h)\cap Y(h))\\
+% & \Rightarrow &\displaystyle \sigma_\cap^V(X,Y) < 1 \Rightarrow \sigma_\curlywedge^V(X,Y) < 1
+%\end{eqnarray*}
+%
+%\item $y \trianglelefteq z \Rightarrow \sigma(x,y) \leq \sigma(x,z)$
+%
+%Vejamos que $ \forall \ h \in [0,1], Y(h)\subseteq Z(h),$
+%\begin{eqnarray*}
+% & \Rightarrow & \displaystyle V(X\cap Y) \leq  V(X\cap Z) \\
+% & \Rightarrow & \frac{V(X\cap Y)}{V(X)} \leq  \frac{V(X\cap Z)}{V(X)}\\ 
+% & \Rightarrow &\displaystyle \sigma_\cap^V (X(h),Y(h)) \leq \sigma_\cap^V (X(h),Z(h))\\
+% & \Rightarrow &\displaystyle\int_0^1\sigma_\cap^V (X(h),Y(h))dh \leq \int_0^1\sigma_\cap^V (X(h),Z(h))dh\\
+%& \Rightarrow &\displaystyle\sigma_\curlywedge^V(X,Y) \leq \sigma_\curlywedge^V(X,Z)  
+%\end{eqnarray*}
+%\end{enumerate}
+%
+%
+%\begin{exe}
+%Supondo uma regra do tipo:
+%\end{exe}
+%
+%\begin{center}
+% \textit{Se dor é leve, então...}\\
+%\end{center}
+%Para uma entrada fuzzy com nível de dor entre 4 e 6, temos a situação representada na Figura \ref{fig:exemplo1}.
+%\begin{figure}[H]
+% \centering
+%  \includegraphics[width=0.8\textwidth]{exemplo1.png}
+%  \caption{Exemplo 1}
+%  \label{fig:exemplo1}
+%\end{figure}
+%
+%A função de pertinência do nível de dor leve é:
+%$ m(x) =
+%  \begin{cases}
+%    1-0.2x,       & \quad \text{se } 0\leq x\leq 5\\
+%    0,  & \quad \text{caso contrário}\\
+%  \end{cases}
+%$
+%
+%Portanto os $h$-níveis da regra dor leve são $L(h) = [0,5-5h]$.
+%
+%A função da entrada é:
+%$ e(x) =
+%  \begin{cases}
+%    x-4,       & \quad \text{se } 4\leq x\leq 5\\
+%    6-x,       & \quad \text{se } 5 < x\leq 6\\
+%    0,  & \quad \text{caso contrário}\\
+%  \end{cases}
+%$
+%
+%Portanto os $h$-níveis da entrada são $X(h) = [h+4,6-h]$.
+%
+%Definindo as funções $v$ e $\theta$ da função de comprimento como
+%$\begin{cases}
+%v(x) = x \\
+%\theta(x) = 10 - x
+%\end{cases}$
+% 
+%Calculando $\sigma_\curlywedge^V(X,L)$, temos:
+%\begin{eqnarray*}
+% \displaystyle \sigma_\curlywedge^V(X,L)& = & \int_0^1\sigma_\cap^V (X(h),L(h)) dh = \int_0^1\frac{V([h+4,6-h]\cap [0,5-5h])}{V([h+4,6-h])} dh \\
+% & = &\displaystyle\int_0^{0.167}\frac{V([h+4,5-5h])}{V([h+4,6-h])} dh + \int_{0.167}^1 0 dh= \int_0^{0.167}\frac{11-6h}{12-2h} dh\approx 0.148
+%\end{eqnarray*}
+%
+%\
+%
+%\begin{exe}
+% Supondo uma regra do tipo:
+%\end{exe}
+%
+%\begin{center}
+% \textit{Se dor é moderada, então...}\\
+%\end{center}
+%Para a mesma entrada do exemplo anterior, temos a situação representada na Figura \ref{fig:exemplo2}
+%
+%\begin{figure}[H]
+% \centering
+% \includegraphics[width=0.8\textwidth]{exemplo2.png}
+% \caption{Exemplo 2}
+% \label{fig:exemplo2}
+%\end{figure}
+%
+%A função de pertinência do nível de dor moderada é:
+%$ m(x) =
+%  \begin{cases}
+%    0.2x,       & \quad \text{se } 0\leq x\leq 5\\
+%    2-0.2x,  & \quad \text{se } 5<x\leq 10\\    
+%  \end{cases}
+%$
+%
+%Portanto os $h$-níveis da regra dor moderada são $M(h) = [5h,10-5h]$.
+%
+%Definindo as funções $v$ e $\theta$ da função de comprimento como
+%$\begin{cases}
+% v(x) = x\\
+% \theta(x) = 10 - x\\
+%\end{cases}$
+%
+%Calculando $\sigma_\curlywedge^V(X,M)$, temos:
+%\begin{eqnarray*}
+% \sigma_\curlywedge^V(X,M)& = & \displaystyle\int_0^1\sigma_\cap^V (X(h),M(h)) dh = \int_0^1\frac{V([h+4,6-h]\cap [5h,10-5h])}{V([h+4,6-h])} dh\\
+% & = & \displaystyle \int_0^{1}\frac{V([h+4,6-h])}{V([h+4,6-h])} dh \\
+%& = & \int_0^{1} 1 dh = 1
+%\end{eqnarray*}
+%
+%A seguir será apresentada a base de regras utilizada para compor a classificação de risco de endometriose.
+%
+%\section{Base de regras} \label{sec_base}
+%
+%A fim de inferir o risco de uma mulher ter endometriose, será usado um sistema de base de regras fuzzy. Em acordo com o ginecologista Kleber Cursino de Andrade e conforme os sintomas descritos por mulheres já diagnosticadas 
+%\cite{art1} e \cite{ballweg}, foram tomados os sintomas {\it dismenorreia}, {\it dispareunia}, {\it dores nas costas e/ou nas pernas}, e {\it cansaço}. Cada paciente poderia escolher na escala visual analógica -- EVA -- com os níveis 
+%``leve'', ``moderada'' e ``intensa'', conforme a Figura \ref{eva} o nível de dor ao qual está submetida.
+%
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.4]{eva.jpg}
+%\caption{Escala visual analógica}
+%\label{eva}
+%\end{figure}
+%
+%Por se tratar de uma escolha subjetiva, a cada nível de dor será atribuído uma função grau de pertinência como na Figura \ref{dor}.
+%
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.6]{niveis_dor.png}
+%\caption{Funções de pertinência dos níveis de dor de cada sintoma}
+%\label{dor}
+%\end{figure}
+%
+%É necessário, a partir de então, relacionar os sintomas através da tabela que segue, listando, na última coluna, qual o risco para a mulher com os sintomas da correspondente linha. Tal risco será separado nas categorias: 
+%improvável (I), pouco provável (PP), provável (PR) e muito provável (MP), conforme os números fuzzy da Figura \ref{fig:risco}.
+%
+%\begin{figure}[H]
+% \centering
+% \includegraphics[scale=0.6]{niveis_risco.png}
+% \caption{Funções de pertinência dos níveis de risco de endometriose}
+% \label{fig:risco}
+%\end{figure}
+%
+%A tabela \ref{tabela} mostra, resumidamente, a base de regras a ser implementada conforme o seguinte exemplo:
+%
+%\begin{center}
+% Se {\it Dismenorréia} é {\bf moderada}, {\it Dispareunia} é {\bf leve}, {\it Dores nas pernas e/ou nas costas} são {\bf leves} e {\it Cansaço} é {\bf leve}, então o {\it risco de endometriose} é {\bf improvável}.
+%\end{center}
+%
+%\begin{center}
+%\begin{table}
+%\centering
+%\caption{Base de regras}
+%\label{tabela}
+%\begin{tabular}{|cccc|c|}\hline
+%
+%Dismenorreia & Dispareunia & Dores nas costas e nas pernas & Cansaço & \ \ Risco \ \ \\ \hline
+%Leve & Leve & Leve & Leve & I \\
+%Leve & Leve & Leve & Moderado & I \\
+%Leve & Leve & Leve & Intenso & PP \\
+%Leve & Leve & Moderado & Leve & I \\
+%Leve & Leve & Moderado & Moderado & I \\
+%Leve & Leve & Moderado & Intenso & PP \\
+%Leve & Leve & Intenso & Leve & PP \\
+%Leve & Leve & Intenso & Moderado & PP \\
+%Leve & Leve & Intenso & Intenso & PR \\ \hline
+%Leve & Moderado & Leve & Leve & I \\
+%Leve & Moderado & Leve & Moderado & I \\
+%Leve & Moderado & Leve & Intenso & PP \\
+%Leve & Moderado & Moderado & Leve & I \\
+%Leve & Moderado & Moderado & Moderado & PP \\
+%Leve & Moderado & Moderado & Intenso & PR \\
+%Leve & Moderado & Intenso & Leve & PR \\
+%Leve & Moderado & Intenso & Moderado & PR \\
+%Leve & Moderado & Intenso & Intenso & MP \\ \hline
+%Leve & Intenso & Leve & Leve & I \\
+%Leve & Intenso & Leve & Moderado & PP \\
+%Leve & Intenso & Leve & Intenso & PR \\
+%Leve & Intenso & Moderado & Leve & PP \\
+%Leve & Intenso & Moderado & Moderado & PR\\
+%Leve & Intenso & Moderado & Intenso & MP \\
+%Leve & Intenso & Intenso & Leve & PP \\
+%Leve & Intenso & Intenso & Moderado & PR \\
+%Leve & Intenso & Intenso & Intenso & MP \\ \hline
+%\end{tabular}
+%\end{table}
+%
+%\begin{tabular}{|cccc|c|}\hline
+%Dismenorreia & Dispareunia & Dores nas costas e nas pernas & Cansaço & \ \ Risco \ \ \\ \hline
+%Moderado & Leve & Leve & Leve & I \\
+%Moderado & Leve & Leve & Moderado & I \\
+%Moderado & Leve & Leve & Intenso & I \\
+%Moderado & Leve & Moderado & Leve & PP \\
+%Moderado & Leve & Moderado & Moderado & PP \\
+%Moderado & Leve & Moderado & Intenso & PR \\
+%Moderado & Leve & Intenso & Leve & PR \\
+%Moderado & Leve & Intenso & Moderado & PR \\
+%Moderado & Leve & Intenso & Intenso & MP \\ \hline
+%Moderado & Moderado & Leve & Leve & I \\
+%Moderado & Moderado & Leve & Moderado & PP \\
+%Moderado & Moderado & Leve & Intenso & PR \\
+%Moderado & Moderado & Moderado & Leve & I \\
+%Moderado & Moderado & Moderado & Moderado & PP \\
+%Moderado & Moderado & Moderado & Intenso & PR \\
+%Moderado & Moderado & Intenso & Leve & PR \\
+%Moderado & Moderado & Intenso & Moderado & PR \\
+%Moderado & Moderado & Intenso & Intenso & MP \\ \hline
+%Moderado & Intenso & Leve & Leve & PP \\
+%Moderado & Intenso & Leve & Moderado & PR \\
+%Moderado & Intenso & Leve & Intenso & PR \\
+%Moderado & Intenso & Moderado & Leve & PR \\
+%Moderado & Intenso & Moderado & Moderado & PR \\
+%Moderado & Intenso & Moderado & Intenso & MP \\
+%Moderado & Intenso & Intenso & Leve & PR \\
+%Moderado & Intenso & Intenso & Moderado & MP \\
+%Moderado & Intenso & Intenso & Intenso & MP \\ \hline
+%\end{tabular}
+%
+%\begin{tabular}{|cccc|c|}\hline
+%Dismenorreia & Dispareunia & Dores nas costas e nas pernas & Cansaço & \ \ Risco \ \ \\ \hline
+%Intenso & Leve & Leve & Leve & I \\
+%Intenso & Leve & Leve & Moderado & I \\
+%Intenso & Leve & Leve & Intenso & PP \\
+%Intenso & Leve & Moderado & Leve & PP \\
+%Intenso & Leve & Moderado & Moderado & PP \\
+%Intenso & Leve & Moderado & Intenso & PR \\
+%Intenso & Leve & Intenso & Leve & PP \\
+%Intenso & Leve & Intenso & Moderado & PR \\
+%Intenso & Leve & Intenso & Intenso & MP \\ \hline
+%Intenso & Moderado & Leve & Leve & PP\\
+%Intenso & Moderado & Leve & Moderado & PP \\
+%Intenso & Moderado & Leve & Intenso & PR \\
+%Intenso & Moderado & Moderado & Leve & PP \\
+%Intenso & Moderado & Moderado & Moderado & PR \\
+%Intenso & Moderado & Moderado & Intenso & PR \\
+%Intenso & Moderado & Intenso & Leve & PR\\
+%Intenso & Moderado & Intenso & Moderado & PR \\
+%Intenso & Moderado & Intenso & Intenso & MP \\ \hline
+%Intenso & Intenso & Leve & Leve & PP \\
+%Intenso & Intenso & Leve & Moderado & PR \\
+%Intenso & Intenso & Leve & Intenso & MP \\
+%Intenso & Intenso & Moderado & Leve & PR \\
+%Intenso & Intenso & Moderado & Moderado & PR \\
+%Intenso & Intenso & Moderado & Intenso & MP \\
+%Intenso & Intenso & Intenso & Leve & MP \\
+%Intenso & Intenso & Intenso & Moderado & MP \\
+%Intenso & Intenso & Intenso & Intenso & MP \\ \hline
+%\end{tabular}
+%\end{center}
+%
+%\newpage
+%
+%\section{Análise dos resultados} \label{sec_ana}
+%%
+%%% \section{Resultados por Mamdani e por Reticulados } 
+%%	 	 	 	
+%%A seguir, são apresentados os resultados de algumas simulações de casos com diferentes níveis das entradas para ativação das regras para ambos os métodos. Os valores de entrada, representados por $x$, são tais que  
+%%$x \in \mathbb{N}$ e $ 0 \leq x \leq 10$, baseados na escala EVA. As entradas foram fuzzificadas como funções de pertinência triangulares do tipo $A(x) = triang(x-1,\ x,\ x+1)$, para qualquer $x$ entre 1 e 9. Nos valores 0 e 10, as 
+%%funções foram $A(0) = triang(0,\ 0,\ 1)$ e $A(10) = triang(9,\ 10,\ 10)$. Na saída foi usado o método de defuzzificação do centróide.
+%%
+%%
+%%Primeiramente, foram simulados 5 casos, visando a comparação da eficácia dos métodos para o problema proposto. Foram feitas, ainda, 4 simulações com o objetivo de estimar a relevância de cada parâmetro na classificação de risco,
+%%também para os dois métodos.
+%%
+%%\subsection{Comparação entre os métodos}
+%%
+%%Seguem os 5 primeiros casos, listando os sintomas anteriormente citados da patologia, seguidos por seus níveis e pelos gráficos de saída dos dois métodos. Os resultados dos dois
+%%métodos foram, então, classificados entre os quatro consequentes estabelecidos e comparados.
+%%
+%%\subsubsection{Caso 1 - Extremo inferior: todos os parâmetros no nível mínimo}
+%%
+%%\begin{center}
+%%{\bf Dismenorreia} 0 $\quad$ {\bf Dispareunia} 0  $\quad$   {\bf Dores nas costas e/ou nas pernas} 0  $\quad$  {\bf Cansaço} 0
+%%\end{center}
+%%
+%%As Figuras \ref{Caso1m} e \ref{Caso1v} mostram o caso 1 para o método de Mamdani e o método proposto por Vassilis, respectivamente.
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{mam_0_0_0_0.png}
+%%\caption{Mamdani}
+%%\label{Caso1m}
+%%\end{figure}
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{vass_0_0_0_0.png}
+%%\caption{Método proposto por Vassilis}
+%%\label{Caso1v}
+%%\end{figure}
+%%
+%%\subsubsection{Caso 2 - Extremo superior: todos os parâmetros no nível máximo}
+%%
+%%\begin{center}
+%%{\bf Dismenorreia} 10 $\ \ $ {\bf Dispareunia} 10  $\  $   {\bf Dores nas costas e/ou nas pernas} 10  $\ \ $  {\bf Cansaço} 10
+%%\end{center}
+%%
+%%As Figuras \ref{Caso2m} e \ref{Caso2v} mostram o caso 2 para o método de Mamdani e o método proposto por Vassilis, respectivamente.
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{mam_10_10_10_10.png}
+%%\caption{Mamdani}
+%%\label{Caso2m}
+%%\end{figure}
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{vass_10_10_10_10.png}
+%%\caption{Método proposto por Vassilis}
+%%\label{Caso2v}
+%%\end{figure}
+%%
+%%\subsubsection{Caso 3}
+%%
+%%\begin{center}
+%%{\bf Dismenorreia} 1 $\quad$ {\bf Dispareunia} 3  $\quad$   {\bf Dores nas costas e/ou nas pernas} 5  $\quad$  {\bf Cansaço} 7
+%%\end{center}
+%%
+%%As Figuras \ref{Caso3m} e \ref{Caso3v} mostram o caso 3 para o método de Mamdani e o método proposto por Vassilis, respectivamente.
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{mam_1_3_5_7.png}
+%%\caption{Mamdani}
+%%\label{Caso3m}
+%%\end{figure}
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{vass_1_3_5_7.png}
+%%\caption{Método proposto por Vassilis}
+%%\label{Caso3v}
+%%\end{figure}
+%%
+%%\subsubsection{Caso 4}
+%%
+%%\begin{center}
+%%{\bf Dismenorreia} 8 $\quad$ {\bf Dispareunia} 6  $\quad$   {\bf Dores nas costas e/ou nas pernas} 1  $\quad$  {\bf Cansaço} 7
+%%\end{center}
+%%
+%%As Figuras \ref{Caso4m} e \ref{Caso4v} mostram o caso 4 para o método de Mamdani e o método proposto por Vassilis, respectivamente.
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{mam_8_6_1_7.png}
+%%\caption{Mamdani}
+%%\label{Caso4m}
+%%\end{figure}
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{vass_8_6_1_7.png}
+%%\caption{Método proposto por Vassilis}
+%%\label{Caso4v}
+%%\end{figure}
+%%
+%%\subsubsection{Caso 5}
+%%
+%%\begin{center}
+%%{\bf Dismenorreia} 10 $\quad$ {\bf Dispareunia} 7  $\quad$   {\bf Dores nas costas e/ou nas pernas} 9  $\quad$  {\bf Cansaço} 8
+%%\end{center}
+%%
+%%As Figuras \ref{Caso5m} e \ref{Caso5v} mostram o caso 5 para o método de Mamdani e o método proposto por Vassilis, respectivamente.
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{mam_10_7_9_8.png}
+%%\caption{Mamdani}
+%%\label{Caso5m}
+%%\end{figure}
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{vass_10_7_9_8.png}
+%%\caption{Método proposto por Vassilis}
+%%\label{Caso5v}
+%%\end{figure}
+%%
+%%Analisando os casos extremos, todos os sintomas em 0 e todos os sintomas em 10, pôde-se perceber que o método de Mamdani mostrou o risco de endometriose entre 11,0\% e 88,0\%. O método proposto por Vassilis classificou o risco na 
+%%faixa de 11,0 - 68,1\%. Conclui-se, portanto, que o método de Mamdani, a princípio, foi mais eficiente para o problema proposto.
+%%
+%%\subsection{Estimativa da relevância de cada um dos sintomas} 
+%%
+%%As próximas simulações mantêm três dos sintomas com nível 5 e um variando de 0 a 10, de forma a estimar a relevância de cada um deles na classificação de risco de endometriose.
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{reta_dismenorreia.png}
+%%\caption{Variação do risco $\times$ {\it Dismenorreia}}
+%%\label{fig_dismenoreia}
+%%\end{figure}
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{reta_dispareunia.png}
+%%\caption{Variação do risco $\times$ {\it Dispareunia}}
+%%\label{fig_dispareunia}
+%%\end{figure}
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.6]{reta_dores.png}
+%%\caption{Variação do risco $\times$ {\it Dores nas costas e/ou nas pernas}}
+%%\label{fig_dores}
+%%\end{figure}
+%%
+%%\begin{figure}[H]
+%%\centering
+%%\includegraphics[scale=0.5]{reta_cansaco.png}
+%%\caption{Variação do risco $\times$ {\it Cansaço}}
+%%\label{fig_cansaco}
+%%\end{figure}
+%%
+%%Pode-se observar, através dos gráficos apresentados, que a influência dos sintomas {\it dismenorreia, dispareunia} e {\it dores nas costas e/ou nas pernas} é similar na classificação de risco de endometriose, sendo {\it cansaço}  o 
+%%sintoma que apresenta menor influência. 
+%%
+%%Outro ponto a ser observado é que o método de Mamdani apresenta uma variação mais acentuada da relevância de todos os parâmetros -- em especial do {\it cansaço} -- que o método proposto em \cite{vassilis}. Esse resultado era esperado,
+%uma vez que Mamdani apresentou um risco máximo maior que o outro modelo de inferência.
+%
+%\section{Considerações finais} \label{sec_fim}
+
+%No trabalho proposto foram apresentadas simulações computacionais de dois métodos de inferência fuzzy aplicados a um problema de classificação de risco de endometriose: o método clássico de Mamdani e um método baseado em uma medida 
+%de inclusão. Para concluir qual método é mais fidedigno seria necessário validar segundo dados clínicos reais. 
+%
+%Ainda foi avaliada a influência de cada sintoma na classificação de risco e se observou que {\it dismenorreia}, 
+%{\it dispareunia} e {\it dores nas costas e/ou nas pernas} têm relevância similar, enquanto o {\it cansaço} é menos influente para caracterizar um risco alto da
+%presença da patologia. Nesse aspecto, o método de Mamdani e o método proposto por Vassilis tiveram resultados próximos, embora no primeiro a variação no risco seja um pouco mais acentuada.
+%
+%Como sugestão de desenvolvimento, pode-se citar a otimização da base de regras através de algoritmos genéticos e a comparação dos resultados apresentados com métodos estatísticos bayesianos.
+
+
+%%%%%%%%%%% Bibliografia
+
+\begin{thebibliography}{72}
+
+%\bibitem{zadeh} Zadeh, L. A. {\it Fuzzy sets}. Information and Control 8(3), 338-353 (1965)
+%
+%\bibitem{vassilis} Kaburlasos, V. G., Kehagias, A. {\it Fuzzy inference system (FIS) extensions based on the lattice theory}. Fuzzy Systems, IEEE Transactions on 22(3), 531-546 (2014)
+%
+%\bibitem{gomide} Pedrycz, W., Gomide, F. {\it An introduction to fuzzy sets: analysis and design}. Mit Press, 1998
+%
+%\bibitem{art1} Fourquet, J., et al. {\it Characteristics of women with endometriosis from the USA and Puerto Rico}. J. of Endometriosis and Pelvic Pain Disorders. 7(4), 129--135 (Out. 2015)
+%
+%\bibitem{vigano} Viganò, P., Parazzini, F., Somigliana, E., Vercellini, P. {\it Endometriosis: epidemiology and aetiological factors}. Best Pract Res Clin Obstet Gynecol. 18(2),177-200 (2004) 
+%
+%\bibitem{febrasgo} Federação Brasileira das Associações de Ginecologia e Obstetrícia. {\it Cartilha da Endometriose}
+%
+%\bibitem{kouhung} Kouhung, W., et al. {\it Characteristics of patients with endometriosis in the United States and the United Kingdom}. Fertility and Stelirity, 78(4), 767-772 (Out. 2002)
+%
+%\bibitem{ballweg} Ballweg, M. L. {\it Impact of endometriosis on women's health: comparative historical data show that the earlier the onset, the more severe the disease}. Best Pract Res Clin Obstet Gynecol. 18(2), 201-218 (2004)
+%
+%\bibitem{fourquet} Fourquet, J., et al. {\it Patients' report on how endometriosis affects heatlh, work, and daily life}. Fertility and Sterility, 93(7), 2424-2428 (Mai. 2010)
+%
+%\bibitem{laecio} Barros, L. C. de, Bassanezi, R. C. {\it Tópicos de lógica fuzzy e biomatemática}. 
+%Grupo de Biomatemática, Instituto de Matemática, Estatística e Computação Científica (IMECC), Universidade Estadual de Campinas (UNICAMP), (2006).
+
+
+\end{thebibliography}
+
+\end{document}
