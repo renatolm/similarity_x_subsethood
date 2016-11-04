@@ -25,6 +25,8 @@
 %\usepackage{subcaption} %para pôr legendas em subfiguras
 \usepackage{calligra}
 \usepackage{xcolor}
+\usepackage{makecell}
+\renewcommand\theadfont{\bfseries}
 
 \newtheorem{teo}{Teorema}
 \newtheorem{lema}{Lema}
@@ -108,8 +110,11 @@
 \end{center}
 \end{defi}
 
+\newpage
+
 \section{Experimentos}
 \subsection{Caso 1}
+Entrada triangular quase discreta (3.4,3.5,3.6)
 \begin{figure}[H]
  \centering
   \includegraphics[width=0.8\textwidth]{entrada1.png}
@@ -117,33 +122,58 @@
   \label{fig:entrada1}
 \end{figure}
 
-\begin{figure}[H]
- \centering
-  \includegraphics[width=0.8\textwidth]{resultados1.png}
-  \caption{Resultados do caso 1}
-  \label{fig:resultados1}
-\end{figure}
+%\begin{figure}[H]
+% \centering
+%  \includegraphics[width=0.8\textwidth]{resultados1.png}
+%  \caption{Resultados do caso 1}
+%  \label{fig:resultados1}
+%\end{figure}
 
+\begin{center}
 \begin{tabular}{|l|l|l|l|}
-\textbf{$S_k$} & 0 & 0 & 0 \\
-\textbf{$S_w$} & 0 & 0 & 0 \\
-\textbf{$S_{0.25}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.25}^{\cup}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.5}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.5}^{\cup}$} & 0 & 0 & 0 \\
-\textbf{$S_{1}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{1}^{\cup}$} & 0 & 0 & 0 \\
-\textbf{$S_{2}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{2}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\thead{Medida} & \thead{Regra 1} & \thead{Regra 2} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$S_k$} & 0 & 0.738 & 2.297 \\
+\hline
+\textbf{$S_w$} & 0.938 & 0.988 & 4.996 \\
+\hline
+\textbf{$S_{0.25}^{\cap}$} & 0 & 0.974 & 2.333 \\
+\hline
+\textbf{$S_{0.25}^{\cup}$} & 0.938 & 0.999 & 4.996 \\
+\hline
+\textbf{$S_{0.5}^{\cap}$} & 0 & 0.901 & 2.327 \\
+\hline
+\textbf{$S_{0.5}^{\cup}$} & 0.938 & 0.995 & 4.996 \\
+\hline
+\textbf{$S_{1}^{\cap}$} & 0 & 0.678 & 2.281 \\
+\hline
+\textbf{$S_{1}^{\cup}$} & 0.938 & 0.984 & 4.996 \\
+\hline
+\textbf{$S_{2}^{\cap}$} & 0 & 0.281 & 2.133 \\
+\hline
+\textbf{$S_{2}^{\cup}$} & 0.937 & 0.965 & 4.997 \\
+\hline
 \textbf{$S_{10}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{10}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{10}^{\cup}$} & 0.937 & 0.952 & 4.998 \\
+\hline
 \textbf{$S_{100}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{100}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{100}^{\cup}$} & 0.936 & 0.951 & 4.998 \\
+\hline
 \textbf{$S_{1000}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{1000}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1000}^{\cup}$} & 0.714 & 0.769 & 4.966 \\
+\hline
 \end{tabular}
+\end{center}
+
+
+\newpage
 
 \subsection{Caso 2}
+Entrada triangular quase igual ao antecedente (0.0,3.3,4.0)
 \begin{figure}[H]
  \centering
   \includegraphics[width=0.8\textwidth]{entrada2.png}
@@ -151,33 +181,57 @@
   \label{fig:entrada2}
 \end{figure}
 
-\begin{figure}[H]
- \centering
-  \includegraphics[width=0.8\textwidth]{resultados2.png}
-  \caption{Resultados do caso 2}
-  \label{fig:resultados2}
-\end{figure}
+%\begin{figure}[H]
+% \centering
+%  \includegraphics[width=0.8\textwidth]{resultados2.png}
+%  \caption{Resultados do caso 2}
+%  \label{fig:resultados2}
+%\end{figure}
 
+\begin{center}
 \begin{tabular}{|l|l|l|l|}
-\textbf{$S_k$} & 0 & 0 & 0 \\
-\textbf{$S_w$} & 0 & 0 & 0 \\
-\textbf{$S_{0.25}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.25}^{\cup}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.5}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.5}^{\cup}$} & 0 & 0 & 0 \\
-\textbf{$S_{1}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{1}^{\cup}$} & 0 & 0 & 0 \\
-\textbf{$S_{2}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{2}^{\cup}$} & 0 & 0 & 0 \\
-\textbf{$S_{10}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{10}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\thead{Medida} & \thead{Regra 1} & \thead{Regra 2} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$S_k$} & 0 & 0.929 & 2.330 \\
+\hline
+\textbf{$S_w$} & 0.429 & 0.935 & 4.539 \\
+\hline
+\textbf{$S_{0.25}^{\cap}$} & 0 & 0.988 & 2.333 \\
+\hline
+\textbf{$S_{0.25}^{\cup}$} & 0.429 & 0.988 & 4.536 \\
+\hline
+\textbf{$S_{0.5}^{\cap}$} & 0 & 0.968 & 2.333 \\
+\hline
+\textbf{$S_{0.5}^{\cup}$} & 0.429 & 0.969 & 4.536 \\
+\hline
+\textbf{$S_{1}^{\cap}$} & 0 & 0.926 & 2.330 \\
+\hline
+\textbf{$S_{1}^{\cup}$} & 0.429 & 0.931 & 4.540 \\
+\hline
+\textbf{$S_{2}^{\cap}$} & 0 & 0.839 & 2.318 \\
+\hline
+\textbf{$S_{2}^{\cup}$} & 0.429 & 0.861 & 4.554 \\
+\hline
+\textbf{$S_{10}^{\cap}$} & 0 & 0.323 & 2.151 \\
+\hline
+\textbf{$S_{10}^{\cup}$} & 0.429 & 0.596 & 4.730 \\
+\hline
 \textbf{$S_{100}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{100}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{100}^{\cup}$} & 0.429 & 0.5 & 4.864 \\
+\hline
 \textbf{$S_{1000}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{1000}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1000}^{\cup}$} & 0.426 & 0.497 & 4.864 \\
+\hline
 \end{tabular}
+\end{center}
+
+\newpage
 
 \subsection{Caso 3}
+Entrada triangular com pouca interseção (3.8,4.0,5.0)
 \begin{figure}[H]
  \centering
   \includegraphics[width=0.8\textwidth]{entrada3.png}
@@ -185,33 +239,57 @@
   \label{fig:entrada3}
 \end{figure}
 
-\begin{figure}[H]
- \centering
-  \includegraphics[width=0.8\textwidth]{resultados3.png}
-  \caption{Resultados do caso 3}
-  \label{fig:resultados3}
-\end{figure}
+%\begin{figure}[H]
+% \centering
+%  \includegraphics[width=0.8\textwidth]{resultados3.png}
+%  \caption{Resultados do caso 3}
+%  \label{fig:resultados3}
+%\end{figure}
 
+\begin{center}
 \begin{tabular}{|l|l|l|l|}
-\textbf{$S_k$} & 0 & 0 & 0 \\
-\textbf{$S_w$} & 0 & 0 & 0 \\
-\textbf{$S_{0.25}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.25}^{\cup}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.5}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.5}^{\cup}$} & 0 & 0 & 0 \\
-\textbf{$S_{1}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{1}^{\cup}$} & 0 & 0 & 0 \\
-\textbf{$S_{2}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{2}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\thead{Medida} & \thead{Regra 1} & \thead{Regra 2} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$S_k$} & 0 & 0.028 & 2.014 \\
+\hline
+\textbf{$S_w$} & 0.714 & 0.774 & 4.963 \\
+\hline
+\textbf{$S_{0.25}^{\cap}$} & 0 & 0.601 & 2.258 \\
+\hline
+\textbf{$S_{0.25}^{\cup}$} & 0.714 & 0.787 & 4.956 \\
+\hline
+\textbf{$S_{0.5}^{\cap}$} & 0 & 0.266 & 2.126 \\
+\hline
+\textbf{$S_{0.5}^{\cup}$} & 0.714 & 0.777 & 4.961 \\
+\hline
+\textbf{$S_{1}^{\cap}$} & 0 & 0.045 & 2.022 \\
+\hline
+\textbf{$S_{1}^{\cup}$} & 0.714 & 0.771 & 4.965 \\
+\hline
+\textbf{$S_{2}^{\cap}$} & 0 & 0.001 & 2 \\
+\hline
+\textbf{$S_{2}^{\cup}$} & 0.714 & 0.769 & 4.966 \\
+\hline
 \textbf{$S_{10}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{10}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{10}^{\cup}$} & 0.714 & 0.769 & 4.966 \\
+\hline
 \textbf{$S_{100}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{100}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{100}^{\cup}$} & 0.714 & 0.769 & 4.966 \\
+\hline
 \textbf{$S_{1000}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{1000}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1000}^{\cup}$} & 0.649 & 0.711 & 4.949 \\
+\hline
 \end{tabular}
+\end{center}
+
+\newpage
 
 \subsection{Caso 4}
+Entrada triangular sem interseção mas próxima de um dos antecedentes (4.0,4.5,5.0)
 \begin{figure}[H]
  \centering
   \includegraphics[width=0.8\textwidth]{entrada4.png}
@@ -219,33 +297,57 @@
   \label{fig:entrada4}
 \end{figure}
 
-\begin{figure}[H]
- \centering
-  \includegraphics[width=0.8\textwidth]{resultados4.png}
-  \caption{Resultados do caso 4}
-  \label{fig:resultados4}
-\end{figure}
-
+%\begin{figure}[H]
+% \centering
+%  \includegraphics[width=0.8\textwidth]{resultados4.png}
+%  \caption{Resultados do caso 4}
+%  \label{fig:resultados4}
+%\end{figure}
+\begin{center}
 \begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1} & \thead{Regra 2} & \thead{Defuzzificaçao} \\
+\hline
 \textbf{$S_k$} & 0 & 0 & 0 \\
-\textbf{$S_w$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_w$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{0.25}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.25}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{0.25}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{0.5}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.5}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{0.5}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{1}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{1}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{2}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{2}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{2}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{10}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{10}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{10}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{100}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{100}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{100}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{1000}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{1000}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1000}^{\cup}$} & 0.696 & 0.753 & 4.962 \\
+\hline
 \end{tabular}
+\end{center}
+
+\newpage
 
 \subsection{Caso 5}
+Entrada triangular equidistante dos antecedentes (5.0,5.5,6.0).
+Obs: notar que os antecedentes não possuem o mesmo tamanho.
 \begin{figure}[H]
  \centering
   \includegraphics[width=0.8\textwidth]{entrada5.png}
@@ -253,31 +355,52 @@
   \label{fig:entrada5}
 \end{figure}
 
-\begin{figure}[H]
- \centering
-  \includegraphics[width=0.8\textwidth]{resultados5.png}
-  \caption{Resultados do caso 5}
-  \label{fig:resultados5}
-\end{figure}
-
+%\begin{figure}[H]
+% \centering
+%  \includegraphics[width=0.8\textwidth]{resultados5.png}
+%  \caption{Resultados do caso 5}
+%  \label{fig:resultados5}
+%\end{figure}
+\begin{center}
 \begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1} & \thead{Regra 2} & \thead{Defuzzificaçao} \\
+\hline
 \textbf{$S_k$} & 0 & 0 & 0 \\
-\textbf{$S_w$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_w$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{0.25}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.25}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{0.25}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{0.5}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{0.5}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{0.5}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{1}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{1}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{2}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{2}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{2}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{10}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{10}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{10}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{100}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{100}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{100}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
 \textbf{$S_{1000}^{\cap}$} & 0 & 0 & 0 \\
-\textbf{$S_{1000}^{\cup}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1000}^{\cup}$} & 0.696 & 0.753 & 4.962 \\
+\hline
 \end{tabular}
+\end{center}
+
 %\section{Endometriose} \label{sec_endo}
 %
 %Endometriose é uma patologia que atinge cerca de 10$\%$ das mulheres em período fértil ao redor do mundo, sendo a mais comum condição ginecológica benigna \cite{vigano}. Segundo a teoria de Sampson, essa doença se dá devido ao 

@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.11.3)  4 NOV 2016 10:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.2.18)  4 NOV 2016 18:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Trabalho.tex
 (./Trabalho.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 4 languages loaded.
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
@@ -342,27 +342,32 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-\c@teo=\count117
-\c@lema=\count118
-\c@exe=\count119
-\c@defi=\count120
-\c@obs=\count121
-
-(./Trabalho.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen137
+\c@nlinenum=\count117
+\TeXr@lab=\toks35
+)
+\c@teo=\count118
+\c@lema=\count119
+\c@exe=\count120
+\c@defi=\count121
+\c@obs=\count122
+ (./Trabalho.aux)
 \openout1 = `Trabalho.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -400,67 +405,107 @@ LaTeX Font Info:    ... okay on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count122
-\scratchdimen=\dimen137
+\scratchcounter=\count123
+\scratchdimen=\dimen138
 \scratchbox=\box32
-\nofMPsegments=\count123
-\nofMParguments=\count124
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count125
-\MPscratchDim=\dimen138
-\MPnumerator=\count126
-\makeMPintoPDFobject=\count127
-\everyMPtoPDFconversion=\toks36
+\nofMPsegments=\count124
+\nofMParguments=\count125
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count126
+\MPscratchDim=\dimen139
+\MPnumerator=\count127
+\makeMPintoPDFobject=\count128
+\everyMPtoPDFconversion=\toks37
 )
-\c@lstlisting=\count128
+\c@lstlisting=\count129
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 53.
+LaTeX Font Info:    Try loading font information for U+msa on input line 55.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 53.
+LaTeX Font Info:    Try loading font information for U+msb on input line 55.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 53.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 55.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] <entrada1.png, id=23, 
+578.16pt x 433.62pt>
+File: entrada1.png Graphic file (type png)
 
-LaTeX Warning: Empty `thebibliography' environment on input line 753.
+<use entrada1.png>
+Package pdftex.def Info: entrada1.png used on input line 120.
+(pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
+ [3 <./entrada1.png>] [4]
+<entrada2.png, id=33, 578.16pt x 433.62pt>
+File: entrada2.png Graphic file (type png)
+ <use entrada2.png>
+Package pdftex.def Info: entrada2.png used on input line 179.
+(pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
+ [5 <./entrada2.png>] [6] <entrada3.png, id=41, 578.16pt x 433.62pt>
+File: entrada3.png Graphic file (type png)
+ <use entrada3.png>
+Package pdftex.def Info: entrada3.png used on input line 237.
+(pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
+ [7 <./entrada3.png>] [8] <entrada4.png, id=50, 578.16pt x 433.62pt>
+File: entrada4.png Graphic file (type png)
+ <use entrada4.png>
+Package pdftex.def Info: entrada4.png used on input line 295.
+(pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
 
-[2] (./Trabalho.aux) ) 
+[9 <./entrada4.png>] [10] <entrada5.png, id=58, 578.16pt x 433.62pt>
+File: entrada5.png Graphic file (type png)
+
+<use entrada5.png>
+Package pdftex.def Info: entrada5.png used on input line 353.
+(pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
+
+Overfull \hbox (1.66412pt too wide) in paragraph at lines 349--356
+[]\T1/cmr/m/n/10.95 Entrada tri-an-gu-lar equidis-tante dos an-tecedentes (5.0,
+5.5,6.0). Obs: no-tar que os an-tecedentes
+ []
+
+[11 <./entrada5.png>]
+
+LaTeX Warning: Empty `thebibliography' environment on input line 1046.
+
+[12] (./Trabalho.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6359 strings out of 494977
- 89439 string characters out of 6180183
- 158639 words of memory out of 5000000
- 9468 multiletter control sequences out of 15000+600000
- 14798 words of font info for 48 fonts, out of 8000000 for 9000
- 37 hyphenation exceptions out of 8191
- 42i,6n,38p,320b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/renatolm/.texmf-var/fonts/pk/ljfour/jknappen/ec/e
-crm1095.600pk> </home/renatolm/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.
-600pk> </home/renatolm/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> <
-/home/renatolm/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-8.pfb>
-Output written on Trabalho.pdf (2 pages, 117859 bytes).
+ 6551 strings out of 493105
+ 91626 string characters out of 6137072
+ 168113 words of memory out of 5000000
+ 9892 multiletter control sequences out of 15000+600000
+ 15581 words of font info for 49 fonts, out of 8000000 for 9000
+ 1142 hyphenation exceptions out of 8191
+ 42i,14n,38p,320b,285s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
+usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/font
+s/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-su
+per/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></u
+sr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
+Output written on Trabalho.pdf (12 pages, 331628 bytes).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 115 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

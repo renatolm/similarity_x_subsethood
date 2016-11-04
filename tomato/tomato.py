@@ -16,7 +16,11 @@ import skfuzzy as fuzz
 
 
 #Input
-inp = [0.0,2.0,3.0]
+inp = [5.0,5.5,6.0]
+
+inpY = []
+for i in np.arange(0,10,0.001):
+	inpY.append(membership.triang(i,inp[0],inp[1],inp[2]))
 
 universo = np.arange(0,10,0.001)
 
@@ -26,8 +30,7 @@ red = [7.0, 8.0, 10.0]
 
 redY = []
 greenY = []
-yellowY = []
-for i in np.arange(0,10,0.1):
+for i in np.arange(0,10,0.001):
 	redY.append(membership.triang(i,red[0],red[1],red[2]))
 	greenY.append(membership.triang(i,green[0],green[1],green[2]))
 
@@ -37,9 +40,8 @@ unripe = [0.0, 3.0, 4.0]
 ripe = [6.0, 7.0, 10.0]
 
 unripeY = []
-#halfripeY = []
 ripeY = []
-for i in np.arange(0,10,0.1):
+for i in np.arange(0,10,0.001):
 	unripeY.append(membership.triang(i,unripe[0],unripe[1],unripe[2]))
 	ripeY.append(membership.triang(i,ripe[0],ripe[1],ripe[2]))
 
@@ -61,6 +63,23 @@ regra1_subsethood_meet_100 = subsethood_meet_param.ativa_regra(red[0],red[1],red
 regra1_subsethood_join_100 = subsethood_join_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],100)
 regra1_subsethood_meet_1000 = subsethood_meet_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],1000)
 regra1_subsethood_join_1000 = subsethood_join_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],1000)
+
+print "ativacao regra 1 kos: "+str(regra1_subsethood_kosko)
+print "ativacao regra 1 wil: "+str(regra1_subsethood_wilmot)
+print "ativacao regra 1 meet 025: "+str(regra1_subsethood_meet_025)
+print "ativacao regra 1 join 025: "+str(regra1_subsethood_join_025)
+print "ativacao regra 1 meet 05: "+str(regra1_subsethood_meet_05)
+print "ativacao regra 1 join 05: "+str(regra1_subsethood_join_05)
+print "ativacao regra 1 meet 1: "+str(regra1_subsethood_meet_1)
+print "ativacao regra 1 join 1: "+str(regra1_subsethood_join_1)
+print "ativacao regra 1 meet 2: "+str(regra1_subsethood_meet_2)
+print "ativacao regra 1 join 2: "+str(regra1_subsethood_join_2)
+print "ativacao regra 1 meet 10: "+str(regra1_subsethood_meet_10)
+print "ativacao regra 1 join 10: "+str(regra1_subsethood_join_10)
+print "ativacao regra 1 meet 100: "+str(regra1_subsethood_meet_100)
+print "ativacao regra 1 join 100: "+str(regra1_subsethood_join_100)
+print "ativacao regra 1 meet 1000: "+str(regra1_subsethood_meet_1000)
+print "ativacao regra 1 join 1000: "+str(regra1_subsethood_join_1000)
 
 regra1_kos = []
 regra1_wil = []
@@ -113,6 +132,23 @@ regra2_subsethood_meet_100 = subsethood_meet_param.ativa_regra(green[0],green[1]
 regra2_subsethood_join_100 = subsethood_join_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],100)
 regra2_subsethood_meet_1000 = subsethood_meet_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],1000)
 regra2_subsethood_join_1000 = subsethood_join_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],1000)
+
+print "ativacao regra 2 kos: "+str(regra2_subsethood_kosko)
+print "ativacao regra 2 wil: "+str(regra2_subsethood_wilmot)
+print "ativacao regra 2 meet 025: "+str(regra2_subsethood_meet_025)
+print "ativacao regra 2 join 025: "+str(regra2_subsethood_join_025)
+print "ativacao regra 2 meet 05: "+str(regra2_subsethood_meet_05)
+print "ativacao regra 2 join 05: "+str(regra2_subsethood_join_05)
+print "ativacao regra 2 meet 1: "+str(regra2_subsethood_meet_1)
+print "ativacao regra 2 join 1: "+str(regra2_subsethood_join_1)
+print "ativacao regra 2 meet 2: "+str(regra2_subsethood_meet_2)
+print "ativacao regra 2 join 2: "+str(regra2_subsethood_join_2)
+print "ativacao regra 2 meet 10: "+str(regra2_subsethood_meet_10)
+print "ativacao regra 2 join 10: "+str(regra2_subsethood_join_10)
+print "ativacao regra 2 meet 100: "+str(regra2_subsethood_meet_100)
+print "ativacao regra 2 join 100: "+str(regra2_subsethood_join_100)
+print "ativacao regra 2 meet 1000: "+str(regra2_subsethood_meet_1000)
+print "ativacao regra 2 join 1000: "+str(regra2_subsethood_join_1000)
 
 regra2_kos = []
 regra2_wil = []
@@ -286,10 +322,13 @@ print "grau de amadurecimento meet 1000: "+str(grau_def_meet_1000)
 print "grau de amadurecimento join 1000: "+str(grau_def_join_1000)
 
 #Plot
-#pl.plot(np.arange(0,10,0.1),unripeY,'g--')
-#pl.plot(np.arange(0,10,0.1),ripeY, 'r--')
+pl.plot(universo,greenY,'g--')
+pl.plot(universo,redY, 'r--')
+pl.plot(universo,inpY, 'b')
+pl.fill_between(universo, grau0, np.fmax(np.fmin(greenY,inpY),np.fmin(redY,inpY)), facecolor='Orange', alpha=0.7)
 #pl.fill_between(universo, grau0, agregacao, facecolor='Orange', alpha=0.7)
 #pl.plot([grau_def, grau_def], [0, grau_ativacao], 'k', linewidth=1.5, alpha=0.9)
 #pl.axis([0, 10, 0, 1])
 
 #pl.show()
+pl.savefig("resultados/entrada.png")
