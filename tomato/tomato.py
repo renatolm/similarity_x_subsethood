@@ -7,6 +7,9 @@ import mamdani
 import similarity
 import sigma_meet
 import subsethood
+import subsethood_wilmot
+import subsethood_join_param
+import subsethood_meet_param
 import membership
 import math
 import skfuzzy as fuzz
@@ -14,13 +17,11 @@ import skfuzzy as fuzz
 
 #Input
 inp = [0.0,2.0,3.0]
-#inp = 2.0
 
 universo = np.arange(0,10,0.001)
 
 #Antecedent membership functions
 green = [0.0, 3.0, 4.0]
-#yellow = [5.0, 5.5, 6.0]
 red = [7.0, 8.0, 10.0]
 
 redY = []
@@ -29,12 +30,10 @@ yellowY = []
 for i in np.arange(0,10,0.1):
 	redY.append(membership.triang(i,red[0],red[1],red[2]))
 	greenY.append(membership.triang(i,green[0],green[1],green[2]))
-	#yellowY.append(membership.triang(i,yellow[0],yellow[1],yellow[2]))
 
 
 #Consequent membership functions
 unripe = [0.0, 3.0, 4.0]
-#halfripe = [4.0, 5.0, 6.0]
 ripe = [6.0, 7.0, 10.0]
 
 unripeY = []
@@ -42,40 +41,255 @@ unripeY = []
 ripeY = []
 for i in np.arange(0,10,0.1):
 	unripeY.append(membership.triang(i,unripe[0],unripe[1],unripe[2]))
-	#halfripeY.append(membership.triang(i,halfripe[0],halfripe[1],halfripe[2]))
 	ripeY.append(membership.triang(i,ripe[0],ripe[1],ripe[2]))
 
 #Rules
-out = []
 #Rule 1: If a tomato is red then the tomato is ripe
 regra1_subsethood_kosko = subsethood.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2])
-regra1 = []
+regra1_subsethood_wilmot = subsethood_wilmot.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2])
+regra1_subsethood_meet_025 = subsethood_meet_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],0.25)
+regra1_subsethood_join_025 = subsethood_join_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],0.25)
+regra1_subsethood_meet_05 = subsethood_meet_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],0.5)
+regra1_subsethood_join_05 = subsethood_join_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],0.5)
+regra1_subsethood_meet_1 = subsethood_meet_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],1)
+regra1_subsethood_join_1 = subsethood_join_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],1)
+regra1_subsethood_meet_2 = subsethood_meet_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],2)
+regra1_subsethood_join_2 = subsethood_join_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],2)
+regra1_subsethood_meet_10 = subsethood_meet_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],10)
+regra1_subsethood_join_10 = subsethood_join_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],10)
+regra1_subsethood_meet_100 = subsethood_meet_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],100)
+regra1_subsethood_join_100 = subsethood_join_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],100)
+regra1_subsethood_meet_1000 = subsethood_meet_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],1000)
+regra1_subsethood_join_1000 = subsethood_join_param.ativa_regra(red[0],red[1],red[2],inp[0],inp[1],inp[2],1000)
+
+regra1_kos = []
+regra1_wil = []
+regra1_meet_025 = []
+regra1_join_025 = []
+regra1_meet_05 = []
+regra1_join_05 = []
+regra1_meet_1 = []
+regra1_join_1 = []
+regra1_meet_2 = []
+regra1_join_2 = []
+regra1_meet_10 = []
+regra1_join_10 = []
+regra1_meet_100 = []
+regra1_join_100 = []
+regra1_meet_1000 = []
+regra1_join_1000 = []
 for i in np.arange(0,10,0.001):
-	regra1.append(np.fmin(regra1_subsethood_kosko,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_kos.append(np.fmin(regra1_subsethood_kosko,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_wil.append(np.fmin(regra1_subsethood_wilmot,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_meet_025.append(np.fmin(regra1_subsethood_meet_025,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_join_025.append(np.fmin(regra1_subsethood_join_025,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_meet_05.append(np.fmin(regra1_subsethood_meet_05,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_join_05.append(np.fmin(regra1_subsethood_join_05,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_meet_1.append(np.fmin(regra1_subsethood_meet_1,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_join_1.append(np.fmin(regra1_subsethood_join_1,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_meet_2.append(np.fmin(regra1_subsethood_meet_2,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_join_2.append(np.fmin(regra1_subsethood_join_2,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_meet_10.append(np.fmin(regra1_subsethood_meet_10,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_join_10.append(np.fmin(regra1_subsethood_join_10,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_meet_100.append(np.fmin(regra1_subsethood_meet_100,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_join_100.append(np.fmin(regra1_subsethood_join_100,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_meet_1000.append(np.fmin(regra1_subsethood_meet_1000,membership.triang(i,ripe[0],ripe[1],ripe[2])))
+	regra1_join_1000.append(np.fmin(regra1_subsethood_join_1000,membership.triang(i,ripe[0],ripe[1],ripe[2])))
 
 #Rule 2: If a tomato is green then the tomato is unripe
 regra2_subsethood_kosko = subsethood.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2])
-regra2 = []
+regra2_subsethood_wilmot = subsethood_wilmot.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2])
+regra2_subsethood_meet_025 = subsethood_meet_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],0.25)
+regra2_subsethood_join_025 = subsethood_join_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],0.25)
+regra2_subsethood_meet_05 = subsethood_meet_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],0.5)
+regra2_subsethood_join_05 = subsethood_join_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],0.5)
+regra2_subsethood_meet_1 = subsethood_meet_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],1)
+regra2_subsethood_join_1 = subsethood_join_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],1)
+regra2_subsethood_meet_2 = subsethood_meet_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],2)
+regra2_subsethood_join_2 = subsethood_join_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],2)
+regra2_subsethood_meet_10 = subsethood_meet_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],10)
+regra2_subsethood_join_10 = subsethood_join_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],10)
+regra2_subsethood_meet_100 = subsethood_meet_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],100)
+regra2_subsethood_join_100 = subsethood_join_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],100)
+regra2_subsethood_meet_1000 = subsethood_meet_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],1000)
+regra2_subsethood_join_1000 = subsethood_join_param.ativa_regra(green[0],green[1],green[2],inp[0],inp[1],inp[2],1000)
+
+regra2_kos = []
+regra2_wil = []
+regra2_meet_025 = []
+regra2_join_025 = []
+regra2_meet_05 = []
+regra2_join_05 = []
+regra2_meet_1 = []
+regra2_join_1 = []
+regra2_meet_2 = []
+regra2_join_2 = []
+regra2_meet_10 = []
+regra2_join_10 = []
+regra2_meet_100 = []
+regra2_join_100 = []
+regra2_meet_1000 = []
+regra2_join_1000 = []
+
 for i in np.arange(0,10,0.001):
-	regra2.append(np.fmin(regra2_subsethood_kosko,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_kos.append(np.fmin(regra2_subsethood_kosko,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_wil.append(np.fmin(regra2_subsethood_wilmot,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_meet_025.append(np.fmin(regra2_subsethood_meet_025,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_join_025.append(np.fmin(regra2_subsethood_join_025,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_meet_05.append(np.fmin(regra2_subsethood_meet_05,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_join_05.append(np.fmin(regra2_subsethood_join_05,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_meet_1.append(np.fmin(regra2_subsethood_meet_1,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_join_1.append(np.fmin(regra2_subsethood_join_1,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_meet_2.append(np.fmin(regra2_subsethood_meet_2,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_join_2.append(np.fmin(regra2_subsethood_join_2,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_meet_10.append(np.fmin(regra2_subsethood_meet_10,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_join_10.append(np.fmin(regra2_subsethood_join_10,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_meet_100.append(np.fmin(regra2_subsethood_meet_100,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_join_100.append(np.fmin(regra2_subsethood_join_100,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_meet_1000.append(np.fmin(regra2_subsethood_meet_1000,membership.triang(i,unripe[0],unripe[1],unripe[2])))
+	regra2_join_1000.append(np.fmin(regra2_subsethood_join_1000,membership.triang(i,unripe[0],unripe[1],unripe[2])))
 
 
 ## Agregacao das regras
-agregacao = np.fmax(regra1,regra2)
+agregacao_kos = np.fmax(regra1_kos,regra2_kos)
+agregacao_wil = np.fmax(regra1_wil,regra2_wil)
+agregacao_meet_025 = np.fmax(regra1_meet_025,regra2_meet_025)
+agregacao_join_025 = np.fmax(regra1_join_025,regra2_join_025)
+agregacao_meet_05 = np.fmax(regra1_meet_05,regra2_meet_05)
+agregacao_join_05 = np.fmax(regra1_join_05,regra2_join_05)
+agregacao_meet_1 = np.fmax(regra1_meet_1,regra2_meet_1)
+agregacao_join_1 = np.fmax(regra1_join_1,regra2_join_1)
+agregacao_meet_2 = np.fmax(regra1_meet_2,regra2_meet_2)
+agregacao_join_2 = np.fmax(regra1_join_2,regra2_join_2)
+agregacao_meet_10 = np.fmax(regra1_meet_10,regra2_meet_10)
+agregacao_join_10 = np.fmax(regra1_join_10,regra2_join_10)
+agregacao_meet_100 = np.fmax(regra1_meet_100,regra2_meet_100)
+agregacao_join_100 = np.fmax(regra1_join_100,regra2_join_100)
+agregacao_meet_1000 = np.fmax(regra1_meet_1000,regra2_meet_1000)
+agregacao_join_1000 = np.fmax(regra1_join_1000,regra2_join_1000)
 
 grau0 = np.zeros_like(universo)	#variavel auxiliar para montar o grafico
 
 ## Calculo do resultado defuzzificado
-grau_def = fuzz.defuzz(universo, agregacao, 'centroid')		#defuzzificacao pelo metodo centroide
-grau_ativacao = fuzz.interp_membership(universo, agregacao, grau_def)	#intersecao do risco defuzzificado com a funcao de pertinencia
+try:
+	grau_def_kos = fuzz.defuzz(universo, agregacao_kos, 'centroid')		#defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_kos = 0
 
-print "grau de amadurecimento: "+str(grau_def)
+try:
+	grau_def_wil = fuzz.defuzz(universo, agregacao_wil, 'centroid')		#defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_wil = 0
+
+try:
+	grau_def_meet_025 = fuzz.defuzz(universo, agregacao_meet_025, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_meet_025 = 0
+
+try:
+	grau_def_join_025 = fuzz.defuzz(universo, agregacao_join_025, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_join_025 = 0
+
+try:
+	grau_def_meet_05 = fuzz.defuzz(universo, agregacao_meet_05, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_meet_05 = 0
+
+try:
+	grau_def_join_05 = fuzz.defuzz(universo, agregacao_join_05, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_join_05 = 0
+
+try:
+	grau_def_meet_1 = fuzz.defuzz(universo, agregacao_meet_1, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_meet_1 = 0
+
+try:
+	grau_def_join_1 = fuzz.defuzz(universo, agregacao_join_1, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_join_1 = 0
+
+try:
+	grau_def_meet_2 = fuzz.defuzz(universo, agregacao_meet_2, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_meet_2 = 0
+
+try:
+	grau_def_join_2 = fuzz.defuzz(universo, agregacao_join_2, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_join_2 = 0
+
+try:
+	grau_def_meet_10 = fuzz.defuzz(universo, agregacao_meet_10, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_meet_10 = 0
+
+try:
+	grau_def_join_10 = fuzz.defuzz(universo, agregacao_join_10, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_join_10 = 0
+
+try:
+	grau_def_meet_100 = fuzz.defuzz(universo, agregacao_meet_100, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_meet_100 = 0
+
+try:
+	grau_def_join_100 = fuzz.defuzz(universo, agregacao_join_100, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_join_100 = 0
+
+try:
+	grau_def_meet_1000 = fuzz.defuzz(universo, agregacao_meet_1000, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_meet_1000 = 0
+
+try:
+	grau_def_join_1000 = fuzz.defuzz(universo, agregacao_join_1000, 'centroid') #defuzzificacao pelo metodo centroide
+except AssertionError:
+	grau_def_join_1000 = 0
+
+grau_ativacao_kos = fuzz.interp_membership(universo, agregacao_kos, grau_def_kos)
+grau_ativacao_wil = fuzz.interp_membership(universo, agregacao_wil, grau_def_wil)
+grau_ativacao_meet_025 = fuzz.interp_membership(universo, agregacao_meet_025, grau_def_meet_025)
+grau_ativacao_join_025 = fuzz.interp_membership(universo, agregacao_join_025, grau_def_join_025)
+grau_ativacao_meet_05 = fuzz.interp_membership(universo, agregacao_meet_05, grau_def_meet_05)
+grau_ativacao_join_05 = fuzz.interp_membership(universo, agregacao_join_05, grau_def_join_05)
+grau_ativacao_meet_1 = fuzz.interp_membership(universo, agregacao_meet_1, grau_def_meet_1)
+grau_ativacao_join_1 = fuzz.interp_membership(universo, agregacao_join_1, grau_def_join_1)
+grau_ativacao_meet_2 = fuzz.interp_membership(universo, agregacao_meet_2, grau_def_meet_2)
+grau_ativacao_join_2 = fuzz.interp_membership(universo, agregacao_join_2, grau_def_join_2)
+grau_ativacao_meet_10 = fuzz.interp_membership(universo, agregacao_meet_10, grau_def_meet_10)
+grau_ativacao_join_10 = fuzz.interp_membership(universo, agregacao_join_10, grau_def_join_10)
+grau_ativacao_meet_100 = fuzz.interp_membership(universo, agregacao_meet_100, grau_def_meet_100)
+grau_ativacao_join_100 = fuzz.interp_membership(universo, agregacao_join_100, grau_def_join_100)
+grau_ativacao_meet_1000 = fuzz.interp_membership(universo, agregacao_meet_1000, grau_def_meet_1000)
+grau_ativacao_join_1000 = fuzz.interp_membership(universo, agregacao_join_1000, grau_def_join_1000)
+
+print "grau de amadurecimento kosko: "+str(grau_def_kos)
+print "grau de amadurecimento willmott: "+str(grau_def_wil)
+print "grau de amadurecimento meet 0.25: "+str(grau_def_meet_025)
+print "grau de amadurecimento join 0.25: "+str(grau_def_join_025)
+print "grau de amadurecimento meet 0.5: "+str(grau_def_meet_05)
+print "grau de amadurecimento join 0.5: "+str(grau_def_join_05)
+print "grau de amadurecimento meet 1: "+str(grau_def_meet_1)
+print "grau de amadurecimento join 1: "+str(grau_def_join_1)
+print "grau de amadurecimento meet 2: "+str(grau_def_meet_2)
+print "grau de amadurecimento join 2: "+str(grau_def_join_2)
+print "grau de amadurecimento meet 10: "+str(grau_def_meet_10)
+print "grau de amadurecimento join 10: "+str(grau_def_join_10)
+print "grau de amadurecimento meet 100: "+str(grau_def_meet_100)
+print "grau de amadurecimento join 100: "+str(grau_def_join_100)
+print "grau de amadurecimento meet 1000: "+str(grau_def_meet_1000)
+print "grau de amadurecimento join 1000: "+str(grau_def_join_1000)
 
 #Plot
-pl.plot(np.arange(0,10,0.1),unripeY,'g--')
-pl.plot(np.arange(0,10,0.1),ripeY, 'r--')
-pl.fill_between(universo, grau0, agregacao, facecolor='Orange', alpha=0.7)
-pl.plot([grau_def, grau_def], [0, grau_ativacao], 'k', linewidth=1.5, alpha=0.9)
-pl.axis([0, 10, 0, 1])
+#pl.plot(np.arange(0,10,0.1),unripeY,'g--')
+#pl.plot(np.arange(0,10,0.1),ripeY, 'r--')
+#pl.fill_between(universo, grau0, agregacao, facecolor='Orange', alpha=0.7)
+#pl.plot([grau_def, grau_def], [0, grau_ativacao], 'k', linewidth=1.5, alpha=0.9)
+#pl.axis([0, 10, 0, 1])
 
-pl.show()
+#pl.show()
