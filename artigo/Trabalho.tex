@@ -132,7 +132,7 @@ Entrada triangular quase discreta (3.4,3.5,3.6)
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
-\thead{Medida} & \thead{Regra 1} & \thead{Regra 2} & \thead{Defuzzificaçao} \\
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
 \hline
 \textbf{$S_k$} & 0 & 0.738 & 2.297 \\
 \hline
@@ -191,7 +191,7 @@ Entrada triangular quase igual ao antecedente (0.0,3.3,4.0)
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
-\thead{Medida} & \thead{Regra 1} & \thead{Regra 2} & \thead{Defuzzificaçao} \\
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
 \hline
 \textbf{$S_k$} & 0 & 0.929 & 2.330 \\
 \hline
@@ -249,7 +249,7 @@ Entrada triangular com pouca interseção (3.8,4.0,5.0)
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
-\thead{Medida} & \thead{Regra 1} & \thead{Regra 2} & \thead{Defuzzificaçao} \\
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
 \hline
 \textbf{$S_k$} & 0 & 0.028 & 2.014 \\
 \hline
@@ -307,7 +307,7 @@ Entrada triangular sem interseção mas próxima de um dos antecedentes (4.0,4.5,5.
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
-\thead{Medida} & \thead{Regra 1} & \thead{Regra 2} & \thead{Defuzzificaçao} \\
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
 \hline
 \textbf{$S_k$} & 0 & 0 & 0 \\
 \hline
@@ -366,7 +366,7 @@ Obs: notar que os antecedentes não possuem o mesmo tamanho.
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
-\thead{Medida} & \thead{Regra 1} & \thead{Regra 2} & \thead{Defuzzificaçao} \\
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
 \hline
 \textbf{$S_k$} & 0 & 0 & 0 \\
 \hline
@@ -409,7 +409,7 @@ Obs: notar que os antecedentes não possuem o mesmo tamanho.
 
 \item Também é possível notar que conforme o parâmetro $p$ aumenta, o grau de ativação pela medida de subsethood do tipo {\it join} ($S_p^{\cup}$) tende a se igualar para todas as regras. Portanto, também não parece interessante considerar as medidas do tipo {\it join} ($S_p^{\cup}$) com $p \geq 10$.
 
-\item No Caso 1, 
+\item No Caso 1, apesar de a entrada apresentar um nível considerável de interseção com o antecedente da Regra 2 (tomate verde), as medidas de subsethood do tipo {\it join} ($S_p^{\cup}$) ainda apresentam um elevado grau de ativação, em geral $\geq 0.9$. Desta forma, é possível concluir que para entradas com cardinalidade pequena, deve-se dar um peso maior para o grau de ativação das medidas de subsethood do tipo {\it meet} ($S_p^{\cap}$).
 
 \end{itemize}
 
