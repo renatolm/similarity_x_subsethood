@@ -428,5 +428,5 @@ ax15.plot([grau_def_join_1000,grau_def_join_1000], [0, grau_ativacao_join_1000],
 ax15.set_title("Join p=1000")
 
 pl.tight_layout()
-pl.show()
-#pl.savefig("resultados/entrada.png")
+#pl.show()
+pl.savefig("resultados/resultados5.png")
