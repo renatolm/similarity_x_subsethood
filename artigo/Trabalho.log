@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.1)  7 NOV 2016 14:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.1)  7 NOV 2016 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -348,26 +348,39 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \c@nlinenum=\count117
 \TeXr@lab=\toks35
 )
+(/usr/share/texlive/texmf-dist/tex/latex/soul/soul.sty
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks36
+\SOUL@lasttoken=\toks37
+\SOUL@cmds=\toks38
+\SOUL@buffer=\toks39
+\SOUL@token=\toks40
+\SOUL@spaceskip=\skip57
+\SOUL@ttwidth=\dimen138
+\SOUL@uldp=\dimen139
+\SOUL@ulht=\dimen140
+)
 \c@teo=\count118
 \c@lema=\count119
 \c@exe=\count120
 \c@defi=\count121
 \c@obs=\count122
+\c@prop=\count123
  (./Trabalho.aux)
 \openout1 = `Trabalho.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -405,31 +418,31 @@ LaTeX Font Info:    ... okay on input line 41.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count123
-\scratchdimen=\dimen138
+\scratchcounter=\count124
+\scratchdimen=\dimen141
 \scratchbox=\box32
-\nofMPsegments=\count124
-\nofMParguments=\count125
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count126
-\MPscratchDim=\dimen139
-\MPnumerator=\count127
-\makeMPintoPDFobject=\count128
-\everyMPtoPDFconversion=\toks37
+\nofMPsegments=\count125
+\nofMParguments=\count126
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count127
+\MPscratchDim=\dimen142
+\MPnumerator=\count128
+\makeMPintoPDFobject=\count129
+\everyMPtoPDFconversion=\toks42
 )
-\c@lstlisting=\count129
+\c@lstlisting=\count130
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 55.
+LaTeX Font Info:    Try loading font information for U+msa on input line 57.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 55.
+LaTeX Font Info:    Try loading font information for U+msb on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 55.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -440,60 +453,60 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 File: entrada1.png Graphic file (type png)
 
 <use entrada1.png>
-Package pdftex.def Info: entrada1.png used on input line 120.
+Package pdftex.def Info: entrada1.png used on input line 122.
 (pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
  <resultados1.png, id=25, 578.16pt x 433.62pt>
 File: resultados1.png Graphic file (type png)
 
 <use resultados1.png>
-Package pdftex.def Info: resultados1.png used on input line 127.
+Package pdftex.def Info: resultados1.png used on input line 129.
 (pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
  [3 <./entrada1.png>] [4 <./resultados1.png>]
 <entrada2.png, id=35, 578.16pt x 433.62pt>
 File: entrada2.png Graphic file (type png)
  <use entrada2.png>
-Package pdftex.def Info: entrada2.png used on input line 179.
+Package pdftex.def Info: entrada2.png used on input line 181.
 (pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
 
 <resultados2.png, id=36, 578.16pt x 433.62pt>
 File: resultados2.png Graphic file (type png)
  <use resultados2.png>
-Package pdftex.def Info: resultados2.png used on input line 186.
+Package pdftex.def Info: resultados2.png used on input line 188.
 (pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
  [5 <./entrada2.png> <./resultados2.png>] [6] <entrada3.png, id=45, 578.16pt x 
 433.62pt>
 File: entrada3.png Graphic file (type png)
 
 <use entrada3.png>
-Package pdftex.def Info: entrada3.png used on input line 237.
+Package pdftex.def Info: entrada3.png used on input line 239.
 (pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
  <resultados3.png, id=46, 578.16pt x 433.62pt>
 File: resultados3.png Graphic file (type png)
 
 <use resultados3.png>
-Package pdftex.def Info: resultados3.png used on input line 244.
+Package pdftex.def Info: resultados3.png used on input line 246.
 (pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
  [7 <./entrada3.png> <./resultados3.png>] [8]
 <entrada4.png, id=56, 578.16pt x 433.62pt>
 File: entrada4.png Graphic file (type png)
  <use entrada4.png>
-Package pdftex.def Info: entrada4.png used on input line 295.
+Package pdftex.def Info: entrada4.png used on input line 297.
 (pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
 
 <resultados4.png, id=57, 578.16pt x 433.62pt>
 File: resultados4.png Graphic file (type png)
  <use resultados4.png>
-Package pdftex.def Info: resultados4.png used on input line 302.
+Package pdftex.def Info: resultados4.png used on input line 304.
 (pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
  [9 <./entrada4.png> <./resultados4.png>] [10] <entrada5.png, id=66, 578.16pt x
  433.62pt>
 File: entrada5.png Graphic file (type png)
 
 <use entrada5.png>
-Package pdftex.def Info: entrada5.png used on input line 354.
+Package pdftex.def Info: entrada5.png used on input line 356.
 (pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
 
-Overfull \hbox (1.66412pt too wide) in paragraph at lines 350--357
+Overfull \hbox (1.66412pt too wide) in paragraph at lines 352--359
 []\T1/cmr/m/n/10.95 Entrada tri-an-gu-lar equidis-tante dos an-tecedentes (5.0,
 5.5,6.0). Obs: no-tar que os an-tecedentes
  []
@@ -501,30 +514,30 @@ Overfull \hbox (1.66412pt too wide) in paragraph at lines 350--357
 <resultados5.png, id=67, 578.16pt x 433.62pt>
 File: resultados5.png Graphic file (type png)
  <use resultados5.png>
-Package pdftex.def Info: resultados5.png used on input line 361.
+Package pdftex.def Info: resultados5.png used on input line 363.
 (pdftex.def)             Requested size: 364.19667pt x 273.14235pt.
- [11 <./entrada5.png> <./resultados5.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 408.
+ [11 <./entrada5.png> <./resultados5.png>] [12]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 412.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 408.
- [12]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 412.
+ [13]
 
-LaTeX Warning: Empty `thebibliography' environment on input line 447.
+LaTeX Warning: Empty `thebibliography' environment on input line 465.
 
-[13] (./Trabalho.aux) ) 
+[14] (./Trabalho.aux) ) 
 Here is how much of TeX's memory you used:
- 6598 strings out of 493105
- 92475 string characters out of 6137073
- 169156 words of memory out of 5000000
- 9931 multiletter control sequences out of 15000+600000
- 15581 words of font info for 49 fonts, out of 8000000 for 9000
+ 6773 strings out of 493105
+ 94603 string characters out of 6137073
+ 174669 words of memory out of 5000000
+ 10101 multiletter control sequences out of 15000+600000
+ 15894 words of font info for 50 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 42i,14n,38p,476b,285s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,14n,38p,481b,287s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.e
 nc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr
@@ -539,10 +552,10 @@ fonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb><
 /usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fon
 ts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-s
 uper/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on Trabalho.pdf (13 pages, 647425 bytes).
+Output written on Trabalho.pdf (14 pages, 654008 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
+ 132 PDF objects out of 1000 (max. 8388607)
+ 80 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

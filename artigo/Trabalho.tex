@@ -26,6 +26,7 @@
 \usepackage{calligra}
 \usepackage{xcolor}
 \usepackage{makecell}
+\usepackage{soul}
 \renewcommand\theadfont{\bfseries}
 
 \newtheorem{teo}{Teorema}
@@ -35,6 +36,7 @@
 \newtheorem{exe}{Exemplo}
 \newtheorem{defi}{Definição}
 \newtheorem{obs}{Observação}
+\newtheorem{prop}{Proposição}
 
 \hyphenation{com-pri-men-to} %algumas palavras são desconhecidas do Latex, mas você força ele a separá-las corretamente
 
@@ -403,19 +405,35 @@ Obs: notar que os antecedentes não possuem o mesmo tamanho.
 \end{tabular}
 \end{center}
 
+\newpage
+
 \subsection{Comentários}
 \begin{itemize}
-\item Em todos os casos, as medidas de subsethood do tipo {\it meet} ($S_p^{\cap}$) com $p \geq 10$ não apresentam valores de ativação significativos. No Caso 2, temos $S_{10}^{\cap}=0.323$ apesar de a entrada estar quase totalmente contida no antecedente. Portanto, não parece interessante considerar as medidas do tipo {\it meet} ($S_p^{\cap}$) com $p \geq 10$.
+\item Em todos os casos, as medidas de subsethood do tipo {\it meet} ($S_p^{\cap}$) com $p \geq 10$ não apresentam valores de ativação significativos. No Caso 2, temos $S_{10}^{\cap}=0.323$ apesar de a entrada estar quase totalmente contida no antecedente. \ul{Portanto, não parece interessante considerar as medidas do tipo {\it meet} ($S_p^{\cap}$) com $p \geq 10$}.
 
-\item Também é possível notar que conforme o parâmetro $p$ aumenta, o grau de ativação pela medida de subsethood do tipo {\it join} ($S_p^{\cup}$) tende a se igualar para todas as regras. Portanto, também não parece interessante considerar as medidas do tipo {\it join} ($S_p^{\cup}$) com $p \geq 10$.
+\item Também é possível notar que conforme o parâmetro $p$ aumenta, o grau de ativação pela medida de subsethood do tipo {\it join} ($S_p^{\cup}$) tende a se igualar para todas as regras. \ul{Portanto, também não parece interessante considerar as medidas do tipo {\it join} ($S_p^{\cup}$) com $p \geq 10$}.
 
-\item No Caso 1, apesar de a entrada apresentar um nível considerável de interseção com o antecedente da Regra 2 (tomate verde), as medidas de subsethood do tipo {\it join} ($S_p^{\cup}$) ainda apresentam um elevado grau de ativação, em geral $\geq 0.9$. Desta forma, é possível concluir que para entradas com cardinalidade pequena, deve-se dar um peso maior para o grau de ativação das medidas de subsethood do tipo {\it meet} ($S_p^{\cap}$).
+\item No Caso 1, apesar de a entrada apresentar um nível considerável de interseção com o antecedente da Regra 2 (tomate verde), as medidas de subsethood do tipo {\it join} ($S_p^{\cup}$) ainda apresentam um elevado grau de ativação, em geral $\geq 0.9$. \ul{Desta forma, é possível concluir que para entradas com cardinalidade pequena, deve-se dar um peso maior para o grau de ativação das medidas de subsethood do tipo {\it meet} ($S_p^{\cap}$)}.
+
+\item Nos Casos 4 e 5, pode-se notar que o grau de ativação das regras independe da localização da entrada no caso em que a interseção da entrada com os antecedentes é vazia. A medida de subsethood do tipo {\it join} ($S_p^{\cup}$) considera apenas a cardinalidade dos antecedentes e da entrada, o que pode representar um problema em bases de regras esparsas.
 
 \end{itemize}
 
 \newpage
 
 \section{Experimentos com combinação de medidas}
+
+\begin{prop}
+A média ponderada entre medidas de subsethood do tipo {\it meet} e {\it join}:
+\begin{center}
+$S=\frac{\alpha S_p^{\cap} + \beta S_p^{\cup}}{\alpha + \beta}$
+\end{center}
+é uma medida de subsethood??? (falta condições para $\alpha$ e $\beta$)
+\end{prop}
+
+\begin{proof}
+
+\end{proof}
 
 
 %%%%%%%%%%% Bibliografia
