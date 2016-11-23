@@ -27,12 +27,13 @@
 \usepackage{xcolor}
 \usepackage{makecell}
 \usepackage{soul}
+\usepackage{dsfont}
 \renewcommand\theadfont{\bfseries}
 
 \newtheorem{teo}{Teorema}
 \newtheorem{lema}{Lema}
 
-\theoremstyle{remark}
+\theoremstyle{definition}
 \newtheorem{exe}{Exemplo}
 \newtheorem{defi}{Definição}
 \newtheorem{obs}{Observação}
@@ -106,7 +107,17 @@
  $S_p^{\cap}(A,B)=I_p(v_p(A),v_p(A \cap B))$,
  \\$S_p^{\cup}(A,B)=I_p(v_p(A \cup B),v_p(B))$
 \end{center}
- Onde $I_p$ denota a implicação de Goguen e $v_p$ é uma função $\mathcal{F}(X) \rightarrow [0,1]$ definida por:
+ Onde $I_p$ denota a implicação de Goguen
+ \begin{center}
+ \[
+ I_p(x,y) = 
+  \begin{cases} 
+   1 & \text{se } x = 0 \\
+   \min(1,\frac{y}{x})       & \text{se } x > 0
+  \end{cases}
+\]
+\end{center}
+  e $v_p$ é uma função $\mathcal{F}(X) \rightarrow [0,1]$ definida por:
 \begin{center}
  $v_p=\sum_{i=1}^{k}\frac{1-cos(\pi[\mu_C(x^i)]^p)}{k}, \quad X=\{x^1,...,x^k\}$
 \end{center}
@@ -421,45 +432,102 @@ Obs: notar que os antecedentes não possuem o mesmo tamanho.
 
 \newpage
 
-\section{Experimentos com combinação de medidas}
+\section{Modificadores de números fuzzy}
+
+\begin{defi}
+Um \textit{modificador fuzzy m} sobre X é uma aplicação do tipo:
+\begin{center}
+$m: \mathcal{F}(X) \rightarrow \mathcal{F}(X)$
+\end{center}
+tal que \textit{m} é dito:
+\begin{enumerate}
+\item \textit{Expansivo} se, para todo $A \in \mathcal{F}(X), A \subseteq m(A)$, ou seja, $\mu_{A}(x) \leq \mu_{m(A)}(x)$, $\forall x \in X$;
+\item \textit{Restritivo} se, para todo $A \in \mathcal{F}(X), A \supseteq m(A)$, ou seja, $\mu_{A}(x) \geq \mu_{m(A)}(x)$, $\forall x \in X$;
+\end{enumerate}
+\end{defi}
+
+\hfill
 
 \begin{prop}
-A média ponderada entre medidas de subsethood do tipo {\it meet} e {\it join}:
-\begin{center}
-$S=\frac{\alpha S_p^{\cap} + \beta S_p^{\cup}}{\alpha + \beta}$
-\end{center}
-é uma medida de subsethood??? (falta condições para $\alpha$ e $\beta$)
+\label{procedimento}
+Considere o seguinte procedimento para construção de números fuzzy modificados:
+\begin{enumerate}
+\item Centrar A em torno de 0;
+\item Adicionar c a ambos os lados de $supp(A)$;
+\item Calcular $f = \frac{supp(A)}{supp(A^c)}$;
+\item Multiplicar todos os $\alpha$-cortes por f;
+\item Transladar o resultado de volta.
+\end{enumerate}
+Isto deve funcionar para todos os números fuzzy, menos números fuzzy crisp, que podem 
+ser vistos como números fuzzy triangulares. Para $r \in \mathds{R}$, podemos definir $r^c 
+= (r-c;r;r+c)$.
 \end{prop}
 
-\begin{proof}
+\begin{exe}
+Seja o seguinte número fuzzy $A \in \mathcal{F}(\mathds{R})$:
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{numero_orig.png}
+  \caption{Número fuzzy a ser modificado.}
+  \label{fig:numero_orig}
+\end{figure}
+Com função de pertinência dada por:
+\begin{center}
+\[
+ \mu_A(x) = 
+  \begin{cases} 
+   x-2 & \text{se } 2 < x \leq 3 \\
+   4-x & \text{se } 3 < x \leq 4 \\
+   0 & \text{c.c. }
+  \end{cases}
+\]
+\end{center}
+E $\alpha$-cortes dados por:
+\begin{center}
+$A^{\alpha} = [\alpha + 2, -\alpha + 4]$
+\end{center}
+Aplicando o procedimento descrito na Proposição \cite{procedimento}, temos:
+\begin{itemize}
+\item \textbf{Passo 1}: Centrar A em torno de 0.
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{numero_center.png}
+  \caption{Número fuzzy centrado em 0.}
+  \label{fig:numero_center}
+\end{figure}
 
-\end{proof}
+\item \textbf{Passo 2}: Adicionar c a ambos os lados de $supp(A')$.
+Considerando c = 1, temos:
+\begin{center}
+$supp(A') = [-1,1] \Rightarrow supp(A'^c) = [-2,2] \Rightarrow supp(A^c) = [1,5]$
+\end{center}
 
+\item \textbf{Passo 3}: Calcular $f = \frac{supp(A)}{supp(A^c)}$.
+\begin{align*}
+f &= \frac{supp(A)}{supp(A^c)} = \frac{[2,4]}{[1,5]}
+ = [2,4]\cdot [\frac{1}{5},1] \\
+ &= [\min(2 \cdot \frac{1}{5},4 \cdot \frac{1}{5},2 \cdot 1,4 \cdot 1), \max(2 \cdot \frac{1}{5},4 \cdot \frac{1}{5},2 \cdot 1,4 \cdot 1)] \\
+  &= [\frac{2}{5}, 4]
+\end{align*}
+
+\item \textbf{Passo 4}: Multiplicar todos os $\alpha$-cortes por f.
+\begin{align*}
+B^{\alpha} &= f \cdot A^{\alpha} = [\frac{2}{5}, 4] \cdot A^{\alpha} \\
+ &= [\min(\frac{2}{5} \cdot (\alpha + 2),\frac{2}{5} \cdot (-\alpha + 4),4 \cdot (\alpha + 2),4 \cdot (-\alpha + 4)),\\ &\max(\frac{2}{5} \cdot (\alpha + 2),\frac{2}{5} \cdot (-\alpha + 4),4 \cdot (\alpha + 2),4 \cdot (-\alpha + 4))] \\
+  &= [(\frac{2}{5} \cdot \alpha + \frac{4}{5}),(-4 \cdot \alpha + 16)]
+\end{align*}
+\end{itemize}
+\end{exe}
+
+\newpage
 
 %%%%%%%%%%% Bibliografia
 
 \begin{thebibliography}{72}
 
-%\bibitem{zadeh} Zadeh, L. A. {\it Fuzzy sets}. Information and Control 8(3), 338-353 (1965)
-%
-%\bibitem{vassilis} Kaburlasos, V. G., Kehagias, A. {\it Fuzzy inference system (FIS) extensions based on the lattice theory}. Fuzzy Systems, IEEE Transactions on 22(3), 531-546 (2014)
-%
-%\bibitem{gomide} Pedrycz, W., Gomide, F. {\it An introduction to fuzzy sets: analysis and design}. Mit Press, 1998
-%
-%\bibitem{art1} Fourquet, J., et al. {\it Characteristics of women with endometriosis from the USA and Puerto Rico}. J. of Endometriosis and Pelvic Pain Disorders. 7(4), 129--135 (Out. 2015)
-%
-%\bibitem{vigano} Viganò, P., Parazzini, F., Somigliana, E., Vercellini, P. {\it Endometriosis: epidemiology and aetiological factors}. Best Pract Res Clin Obstet Gynecol. 18(2),177-200 (2004) 
-%
-%\bibitem{febrasgo} Federação Brasileira das Associações de Ginecologia e Obstetrícia. {\it Cartilha da Endometriose}
-%
-%\bibitem{kouhung} Kouhung, W., et al. {\it Characteristics of patients with endometriosis in the United States and the United Kingdom}. Fertility and Stelirity, 78(4), 767-772 (Out. 2002)
-%
-%\bibitem{ballweg} Ballweg, M. L. {\it Impact of endometriosis on women's health: comparative historical data show that the earlier the onset, the more severe the disease}. Best Pract Res Clin Obstet Gynecol. 18(2), 201-218 (2004)
-%
-%\bibitem{fourquet} Fourquet, J., et al. {\it Patients' report on how endometriosis affects heatlh, work, and daily life}. Fertility and Sterility, 93(7), 2424-2428 (Mai. 2010)
-%
-%\bibitem{laecio} Barros, L. C. de, Bassanezi, R. C. {\it Tópicos de lógica fuzzy e biomatemática}. 
-%Grupo de Biomatemática, Instituto de Matemática, Estatística e Computação Científica (IMECC), Universidade Estadual de Campinas (UNICAMP), (2006).
+
+\bibitem{laecio} Barros, L. C. de, Bassanezi, R. C. {\it Tópicos de lógica fuzzy e biomatemática}. 
+Grupo de Biomatemática, Instituto de Matemática, Estatística e Computação Científica (IMECC), Universidade Estadual de Campinas (UNICAMP), (2006).
 
 
 \end{thebibliography}

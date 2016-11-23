@@ -21,6 +21,8 @@ def ativa_regra(iniRegra, topoRegra, fimRegra, iniEntrada, topoEntrada, fimEntra
 	for i in np.arange(max(iniEntrada,iniRegra), min(fimEntrada,fimRegra), 0.001):		
 		mi = min(membership.triang(i, iniRegra, topoRegra, fimRegra), membership.triang(i, iniEntrada, topoEntrada, fimEntrada)) 
 		numerador = numerador + (1 - math.cos(math.pi*((mi)**p)))
+
+	for i in np.arange(iniEntrada, fimEntrada, 0.001):
 		entrada = membership.triang(i, iniEntrada, topoEntrada, fimEntrada)
 		denominador = denominador + (1 - math.cos(math.pi*((entrada)**p)))
 
@@ -41,6 +43,8 @@ def ativa_regra_trap(iniRegra, topoRegra1, topoRegra2, fimRegra, iniEntrada, top
 	for i in np.arange(max(iniEntrada,iniRegra), min(fimEntrada,fimRegra), 0.001):		
 		mi = min(membership.trap(i, iniRegra, topoRegra1, topoRegra2, fimRegra), membership.triang(i, iniEntrada, topoEntrada, fimEntrada)) 
 		numerador = numerador + (1 - math.cos(math.pi*((mi)**p)))
+
+		for i in np.arange(iniEntrada, fimEntrada, 0.001):
 		entrada = membership.triang(i, iniEntrada, topoEntrada, fimEntrada)
 		denominador = denominador + (1 - math.cos(math.pi*((entrada)**p)))
 
