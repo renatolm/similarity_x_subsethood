@@ -432,6 +432,38 @@ Obs: notar que os antecedentes não possuem o mesmo tamanho.
 
 \newpage
 
+\section{Experimentos com combinação de medidas}
+ 
+\begin{prop}
+A média ponderada entre medidas de subsethood dos tipos {\it meet} e {\it join}:
+\begin{center}
+$S_p(A,B)=\frac{\alpha S_p^{\cap}(A,B) + \beta S_p^{\cup}(A,B)}{\alpha + \beta}$
+\end{center}
+é uma medida de subsethood
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+ \item $S(A,B)=1 \Leftrightarrow A \subseteq B$ \\
+ \underline{$\Rightarrow$:}\quad $S_p(A,B)=1$ \\
+ Suponha que $A \nsubseteq B \Rightarrow S_p^{\cap}(A,B) < 1$ e $S_p^{\cup}(A,B) < 1$ \\
+ $\Rightarrow \alpha S_p^{\cap}(A,B) < \alpha$ e $\beta S_p^{\cup}(A,B) < \beta$ \\
+ $\Rightarrow \alpha S_p^{\cap}(A,B) + \beta S_p^{\cup}(A,B) < \alpha + \beta$ \\
+ $\Rightarrow S_p(A,B) < 1$, o que contradiz a hipótese inicial. \\
+ Portanto, $A \subseteq B$. \\
+ \underline{$\Leftarrow$:}\quad $A \subseteq B$ \\
+ $\Rightarrow S_p^{\cap}(A,B) = 1$ e $S_p^{\cup}(A,B) = 1$ \\
+ $\Rightarrow \alpha S_p^{\cap}(A,B) + \beta S_p^{\cup}(A,B) = \alpha + \beta$ \\
+ $\Rightarrow S_p(A,B)=1$ \\
+ \item $S(X,\emptyset)=0$ \\
+ $S_p^{\cap}(X,\emptyset) = 0$ e $S_p^{\cup}(X,\emptyset) = 0$ \\
+ $\Rightarrow S(X,\emptyset)=\frac{\alpha \cdot 0 + \beta \cdot 0}{\alpha + \beta} = 0$ \\
+ \item Se $A \subseteq B \subseteq C$, então $S(C,A) \leq S(B,A)$ e $S(C,A) \leq S(C,B)$
+\end{enumerate}
+\end{proof}
+
+\newpage
+
 \section{Modificadores de números fuzzy}
 
 \begin{defi}
@@ -516,6 +548,12 @@ B^{\alpha} &= f \cdot A^{\alpha} = [\frac{2}{5}, 4] \cdot A^{\alpha} \\
  &= [\min(\frac{2}{5} \cdot (\alpha + 2),\frac{2}{5} \cdot (-\alpha + 4),4 \cdot (\alpha + 2),4 \cdot (-\alpha + 4)),\\ &\max(\frac{2}{5} \cdot (\alpha + 2),\frac{2}{5} \cdot (-\alpha + 4),4 \cdot (\alpha + 2),4 \cdot (-\alpha + 4))] \\
   &= [(\frac{2}{5} \cdot \alpha + \frac{4}{5}),(-4 \cdot \alpha + 16)]
 \end{align*}
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{numero_resultado.png}
+  \caption{Número fuzzy modificado.}
+  \label{fig:numero_resultado}
+\end{figure}
 \end{itemize}
 \end{exe}
 
