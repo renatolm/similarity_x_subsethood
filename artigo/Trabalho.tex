@@ -718,6 +718,74 @@ Entrada triangular sem intersecção mas próxima de um dos antecedentes (4.0,4.5,5
 
 \newpage
 
+\subsection{Caso 5}
+Entrada triangular equidistante dos antecedentes (5.0,5.5,6.0).
+Obs: notar que os antecedentes não possuem o mesmo tamanho.
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada5.png}
+  \caption{Entrada do caso 5}
+  \label{fig:entrada5_comb}
+\end{figure}
+
+\begin{figure}[H]%
+    \centering
+ \hfill
+\subfigure[$\alpha = 0.9$, $\beta = 0.1$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados5_comb_09.png}}
+\hfill
+\subfigure[$\alpha = 0.7$, $\beta = 0.3$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados5_comb_07.png}}
+\hfill
+\subfigure[$\alpha = 0.5$, $\beta = 0.5$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados5_comb_05.png}}
+\hfill
+    \caption{Resultados do caso 5}%
+    \label{fig:resultados5_comb}%
+\end{figure}
+
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$0.9S_k + 0.1S_w$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{0.25}^{\cap} + 0.1S_{0.25}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{0.5}^{\cap} + 0.1S_{0.5}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{1}^{\cap} + 0.1S_{1}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{2}^{\cap} + 0.1S_{2}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.7S_k + 0.3S_w$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{0.25}^{\cap} + 0.3S_{0.25}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{0.5}^{\cap} + 0.3S_{0.5}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{1}^{\cap} + 0.3S_{1}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{2}^{\cap} + 0.3S_{2}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.5S_k + 0.5S_w$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{0.25}^{\cap} + 0.5S_{0.25}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{0.5}^{\cap} + 0.5S_{0.5}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{1}^{\cap} + 0.5S_{1}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{2}^{\cap} + 0.5S_{2}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Comentários}
+
+\newpage
+
 \section{Modificadores de números fuzzy}
 
 \begin{defi}
