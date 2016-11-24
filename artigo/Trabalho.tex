@@ -460,7 +460,11 @@ $S_p(A,B)=\frac{\alpha S_p^{\cap}(A,B) + \beta S_p^{\cup}(A,B)}{\alpha + \beta}$
  \item $S(X,\emptyset)=0$ \\
  $S_p^{\cap}(X,\emptyset) = 0$ e $S_p^{\cup}(X,\emptyset) = 0$ \\
  $\Rightarrow S(X,\emptyset)=\frac{\alpha \cdot 0 + \beta \cdot 0}{\alpha + \beta} = 0$ \\
- \item Se $A \subseteq B \subseteq C$, então $S(C,A) \leq S(B,A)$ e $S(C,A) \leq S(C,B)$
+ \item Se $A \subseteq B \subseteq C$, então $S(C,A) \leq S(B,A)$ e $S(C,A) \leq S(C,B)$ \\
+ $A \subseteq B \subseteq C \Rightarrow S_p^{\cap}(C,A) \leq S_p^{\cap}(B,A)$ e $S_p^{\cup}(C,A) \leq S_p^{\cup}(B,A)$ \\
+ $\Rightarrow \alpha S_p^{\cap}(C,A) + \beta S_p^{\cup}(C,A) \leq \alpha S_p^{\cap}(B,A) + \beta S_p^{\cup}(B,A)$ \\
+  $\Rightarrow S_p(C,A) \leq S_p(B,A)$ \\
+  Similarmente temos que $S_p(C,A) \leq S_p(C,B)$ \\
 \end{enumerate}
 \end{proof}
 
