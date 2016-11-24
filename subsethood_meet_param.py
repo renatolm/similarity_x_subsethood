@@ -44,7 +44,7 @@ def ativa_regra_trap(iniRegra, topoRegra1, topoRegra2, fimRegra, iniEntrada, top
 		mi = min(membership.trap(i, iniRegra, topoRegra1, topoRegra2, fimRegra), membership.triang(i, iniEntrada, topoEntrada, fimEntrada)) 
 		numerador = numerador + (1 - math.cos(math.pi*((mi)**p)))
 
-		for i in np.arange(iniEntrada, fimEntrada, 0.001):
+	for i in np.arange(iniEntrada, fimEntrada, 0.001):
 		entrada = membership.triang(i, iniEntrada, topoEntrada, fimEntrada)
 		denominador = denominador + (1 - math.cos(math.pi*((entrada)**p)))
 
