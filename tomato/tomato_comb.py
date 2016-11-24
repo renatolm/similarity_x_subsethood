@@ -13,7 +13,7 @@ import skfuzzy as fuzz
 
 
 #Input
-inp = [3.4,3.5,3.6]
+inp = [3.8,4.0,5.0]
 
 alpha = 0.5
 beta = 1 - alpha
@@ -220,4 +220,4 @@ ax4.set_title("Meet+Join p=2")
 
 pl.tight_layout()
 #pl.show()
-pl.savefig("resultados/resultados1_comb_05.png")
+pl.savefig("resultados/resultados3_comb_05.png")
