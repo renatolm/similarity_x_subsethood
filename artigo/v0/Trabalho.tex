@@ -1,0 +1,899 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc} 
+%\usepackage[brazil]{babel}
+%Configuração de página.
+%\usepackage[lmargin=2.5cm, rmargin=1.5cm, tmargin=2.5cm, bmargin=1.5cm]{geometry}
+\renewcommand{\baselinestretch}{1.5}
+\usepackage[bottom=2cm,top=3cm,left=3cm,right=2cm]{geometry} %margens nas normas da ABNT
+%\usepackage{setspace} %para poder mudar o espaçamento entre as linhas
+%\usepackage{indentfirst} %pra que o primeiro parágrafo tenha o espaço certo
+\usepackage{amssymb,amsfonts,newlfont,indentfirst,subfigure}
+%\usepackage[dvips]{graphicx} %ajuda a pôr gráficos
+\usepackage[pdftex]{graphicx}
+\usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{enumerate} %para fazer itens
+\usepackage{array} %para fazer tabelas
+\usepackage{amsmath,amsfonts,amssymb} %letras estilo matemático
+%\usepackage{fancyhdr} %pra ajeitar o layout das páginas
+\usepackage{amsthm} %para mudar o estilo dos teoremas
+\usepackage{listings}
+\usepackage{caption} %para pôr legendas
+%\usepackage{subcaption} %para pôr legendas em subfiguras
+\usepackage{calligra}
+\usepackage{xcolor}
+\usepackage{makecell}
+\usepackage{soul}
+\usepackage{dsfont}
+\usepackage{subfig}
+
+\renewcommand\theadfont{\bfseries}
+
+\newtheorem{teo}{Teorema}
+\newtheorem{lema}{Lema}
+
+\theoremstyle{definition}
+\newtheorem{exe}{Exemplo}
+\newtheorem{defi}{Definição}
+\newtheorem{obs}{Observação}
+\newtheorem{prop}{Proposição}
+
+\hyphenation{com-pri-men-to} %algumas palavras são desconhecidas do Latex, mas você força ele a separá-las corretamente
+
+\begin{document}  
+%\onehalfspacing
+\thispagestyle{empty}
+{\large
+
+%%%%%%%%%%% Página 1 - Capa
+
+\begin{center}
+\textbf{UNIVERSIDADE ESTADUAL DE CAMPINAS}
+\end{center}
+
+\vspace{84pt}
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{RENATO LOPES MOURA} & \textbf{RA163050} \\
+\end{tabular}
+\end{center}
+
+\vspace{75pt}
+\begin{center}
+{\Large\textbf{Estudo sobre Inferência Fuzzy baseada em medidas de subsethood}}
+\end{center}
+
+\vfill
+
+\begin{center}
+\textbf{CAMPINAS} \\
+\textbf{2016}
+\end{center}}
+
+%%%%%%%%%%% 
+
+\newpage 
+
+\section{Definições}
+
+\begin{defi}
+ Seja uma função $S:\mathcal{F}(X)x\mathcal{F}(X) \rightarrow [0,1]$. $S(A,B)$ é uma medida de subsethood se para $A,B,C \in \mathcal{F}(X)$ temos:
+ \begin{enumerate}
+ \item $S(A,B)=1 \Leftrightarrow A \subseteq B$ 
+ \item $S(X,\emptyset)=0$ 
+ \item Se $A \subseteq B \subseteq C$, então $S(C,A) \leq S(B,A)$ e $S(C,A) \leq S(C,B)$
+\end{enumerate}
+\end{defi}
+
+\begin{defi}
+ A medida de subsethood de Kosko é definida da seguinte forma:
+ \begin{center}
+ $S_k(A,B)=\frac{\int_{x \in X}min(\mu_A(x),\mu_B(x))}{\int_{x \in X}\mu_A(x)}$ 
+ \end{center}
+\end{defi}
+
+\begin{defi}
+ A medida de subsethood de Willmott é definida da seguinte forma:
+\begin{center}
+ $S_w(A,B)=\frac{\int_{x \in X}\mu_B(x)}{\int_{x \in X}max(\mu_A(x),\mu_B(x))}$
+\end{center}
+\end{defi}
+
+\begin{defi}
+ As medidas de subsethood $S_p^{\cap}$(meet) e $S_p^{\cup}$(join) são definidas da seguinte forma:
+\begin{center}
+ $S_p^{\cap}(A,B)=I(v_p(A),v_p(A \cap B))$,
+ \\$S_p^{\cup}(A,B)=I(v_p(A \cup B),v_p(B))$
+\end{center}
+ Onde $I$ denota a implicação de Goguen
+ \begin{center}
+ \[
+ I(x,y) = 
+  \begin{cases} 
+   1 & \text{se } x = 0 \\
+   \min(1,\frac{y}{x})       & \text{se } x > 0
+  \end{cases}
+\]
+\end{center}
+  e $v_p$ é uma função $\mathcal{F}(X) \rightarrow [0,1]$ definida por:
+\begin{center}
+ $v_p(C)=\sum_{i=1}^{k}\frac{1-cos(\pi[\mu_C(x_i)]^p)}{2k}, \quad X=\{x_1,...,x_k\}$
+\end{center}
+\end{defi}
+
+\newpage
+
+\section{Experimentos}
+\subsection{Caso 1}
+Entrada triangular quase discreta (3.4,3.5,3.6)
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada1.png}
+  \caption{Entrada do caso 1}
+  \label{fig:entrada1}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{resultados1.png}
+  \caption{Resultados do caso 1}
+  \label{fig:resultados1}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$S_k$} & 0 & 0.738 & 2.297 \\
+\hline
+\textbf{$S_w$} & 0.938 & 0.988 & 4.996 \\
+\hline
+\textbf{$S_{0.25}^{\cap}$} & 0 & 0.974 & 2.333 \\
+\hline
+\textbf{$S_{0.25}^{\cup}$} & 0.938 & 0.999 & 4.996 \\
+\hline
+\textbf{$S_{0.5}^{\cap}$} & 0 & 0.901 & 2.327 \\
+\hline
+\textbf{$S_{0.5}^{\cup}$} & 0.938 & 0.995 & 4.996 \\
+\hline
+\textbf{$S_{1}^{\cap}$} & 0 & 0.678 & 2.281 \\
+\hline
+\textbf{$S_{1}^{\cup}$} & 0.938 & 0.984 & 4.996 \\
+\hline
+\textbf{$S_{2}^{\cap}$} & 0 & 0.281 & 2.133 \\
+\hline
+\textbf{$S_{2}^{\cup}$} & 0.937 & 0.965 & 4.997 \\
+\hline
+\textbf{$S_{10}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{10}^{\cup}$} & 0.937 & 0.952 & 4.998 \\
+\hline
+\textbf{$S_{100}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{100}^{\cup}$} & 0.936 & 0.951 & 4.998 \\
+\hline
+\textbf{$S_{1000}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1000}^{\cup}$} & 0.714 & 0.769 & 4.966 \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\newpage
+
+\subsection{Caso 2}
+Entrada triangular quase igual ao antecedente (0.0,3.3,4.0)
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada2.png}
+  \caption{Entrada do caso 2}
+  \label{fig:entrada2}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{resultados2.png}
+  \caption{Resultados do caso 2}
+  \label{fig:resultados2}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$S_k$} & 0 & 0.929 & 2.330 \\
+\hline
+\textbf{$S_w$} & 0.429 & 0.935 & 4.539 \\
+\hline
+\textbf{$S_{0.25}^{\cap}$} & 0 & 0.988 & 2.333 \\
+\hline
+\textbf{$S_{0.25}^{\cup}$} & 0.429 & 0.988 & 4.536 \\
+\hline
+\textbf{$S_{0.5}^{\cap}$} & 0 & 0.968 & 2.333 \\
+\hline
+\textbf{$S_{0.5}^{\cup}$} & 0.429 & 0.969 & 4.536 \\
+\hline
+\textbf{$S_{1}^{\cap}$} & 0 & 0.926 & 2.330 \\
+\hline
+\textbf{$S_{1}^{\cup}$} & 0.429 & 0.931 & 4.540 \\
+\hline
+\textbf{$S_{2}^{\cap}$} & 0 & 0.839 & 2.318 \\
+\hline
+\textbf{$S_{2}^{\cup}$} & 0.429 & 0.861 & 4.554 \\
+\hline
+\textbf{$S_{10}^{\cap}$} & 0 & 0.323 & 2.151 \\
+\hline
+\textbf{$S_{10}^{\cup}$} & 0.429 & 0.596 & 4.730 \\
+\hline
+\textbf{$S_{100}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{100}^{\cup}$} & 0.429 & 0.5 & 4.864 \\
+\hline
+\textbf{$S_{1000}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1000}^{\cup}$} & 0.426 & 0.497 & 4.864 \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Caso 3}
+Entrada triangular com pouca intersecção (3.8,4.0,5.0)
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada3.png}
+  \caption{Entrada do caso 3}
+  \label{fig:entrada3}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{resultados3.png}
+  \caption{Resultados do caso 3}
+  \label{fig:resultados3}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$S_k$} & 0 & 0.028 & 2.014 \\
+\hline
+\textbf{$S_w$} & 0.714 & 0.774 & 4.963 \\
+\hline
+\textbf{$S_{0.25}^{\cap}$} & 0 & 0.601 & 2.258 \\
+\hline
+\textbf{$S_{0.25}^{\cup}$} & 0.714 & 0.787 & 4.956 \\
+\hline
+\textbf{$S_{0.5}^{\cap}$} & 0 & 0.266 & 2.126 \\
+\hline
+\textbf{$S_{0.5}^{\cup}$} & 0.714 & 0.777 & 4.961 \\
+\hline
+\textbf{$S_{1}^{\cap}$} & 0 & 0.045 & 2.022 \\
+\hline
+\textbf{$S_{1}^{\cup}$} & 0.714 & 0.771 & 4.965 \\
+\hline
+\textbf{$S_{2}^{\cap}$} & 0 & 0.001 & 2 \\
+\hline
+\textbf{$S_{2}^{\cup}$} & 0.714 & 0.769 & 4.966 \\
+\hline
+\textbf{$S_{10}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{10}^{\cup}$} & 0.714 & 0.769 & 4.966 \\
+\hline
+\textbf{$S_{100}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{100}^{\cup}$} & 0.714 & 0.769 & 4.966 \\
+\hline
+\textbf{$S_{1000}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1000}^{\cup}$} & 0.649 & 0.711 & 4.949 \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Caso 4}
+Entrada triangular sem intersecção mas próxima de um dos antecedentes (4.0,4.5,5.0)
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada4.png}
+  \caption{Entrada do caso 4}
+  \label{fig:entrada4}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{resultados4.png}
+  \caption{Resultados do caso 4}
+  \label{fig:resultados4}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$S_k$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_w$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{0.25}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{0.25}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{0.5}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{0.5}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{1}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{2}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{2}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{10}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{10}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{100}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{100}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{1000}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1000}^{\cup}$} & 0.696 & 0.753 & 4.962 \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Caso 5}
+Entrada triangular equidistante dos antecedentes (5.0,5.5,6.0).
+Obs: notar que os antecedentes não possuem o mesmo tamanho.
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada5.png}
+  \caption{Entrada do caso 5}
+  \label{fig:entrada5}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{resultados5.png}
+  \caption{Resultados do caso 5}
+  \label{fig:resultados5}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$S_k$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_w$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{0.25}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{0.25}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{0.5}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{0.5}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{1}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{2}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{2}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{10}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{10}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{100}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{100}^{\cup}$} & 0.750 & 0.800 & 4.974 \\
+\hline
+\textbf{$S_{1000}^{\cap}$} & 0 & 0 & 0 \\
+\hline
+\textbf{$S_{1000}^{\cup}$} & 0.696 & 0.753 & 4.962 \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Comentários}
+\begin{itemize}
+\item Em todos os casos, as medidas de subsethood do tipo {\it meet} ($S_p^{\cap}$) com $p \geq 10$ não apresentam valores de ativação significativos. No Caso 2, temos $S_{10}^{\cap}=0.323$ apesar de a entrada estar quase totalmente contida no antecedente. \ul{Portanto, não parece interessante considerar as medidas do tipo {\it meet} ($S_p^{\cap}$) com $p \geq 10$}.
+
+\item Também é possível notar que conforme o parâmetro $p$ aumenta, o grau de ativação pela medida de subsethood do tipo {\it join} ($S_p^{\cup}$) tende a se igualar para todas as regras. \ul{Portanto, também não parece interessante considerar as medidas do tipo {\it join} ($S_p^{\cup}$) com $p \geq 10$}.
+
+\item No Caso 1, apesar de a entrada apresentar um nível considerável de interseção com o antecedente da Regra 2 (tomate verde), as medidas de subsethood do tipo {\it join} ($S_p^{\cup}$) ainda apresentam um elevado grau de ativação, em geral $\geq 0.9$. \ul{Desta forma, é possível concluir que para entradas com cardinalidade pequena, deve-se dar um peso maior para o grau de ativação das medidas de subsethood do tipo {\it meet} ($S_p^{\cap}$)}.
+
+\item Nos Casos 4 e 5, pode-se notar que o grau de ativação das regras independe da localização da entrada no caso em que a interseção da entrada com os antecedentes é vazia. A medida de subsethood do tipo {\it join} ($S_p^{\cup}$) considera apenas a cardinalidade dos antecedentes e da entrada, o que pode representar um problema em bases de regras esparsas.
+
+\end{itemize}
+
+\newpage
+
+\section{Experimentos com combinação de medidas}
+ 
+\begin{prop}
+A média ponderada entre medidas de subsethood dos tipos {\it meet} e {\it join}:
+\begin{center}
+$S_p(A,B)=\frac{\alpha S_p^{\cap}(A,B) + \beta S_p^{\cup}(A,B)}{\alpha + \beta}$
+\end{center}
+é uma medida de subsethood
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+ \item $S(A,B)=1 \Leftrightarrow A \subseteq B$ \\
+ \underline{$\Rightarrow$:}\quad $S_p(A,B)=1$ \\
+ Suponha que $A \nsubseteq B \Rightarrow S_p^{\cap}(A,B) < 1$ e $S_p^{\cup}(A,B) < 1$ \\
+ $\Rightarrow \alpha S_p^{\cap}(A,B) < \alpha$ e $\beta S_p^{\cup}(A,B) < \beta$ \\
+ $\Rightarrow \alpha S_p^{\cap}(A,B) + \beta S_p^{\cup}(A,B) < \alpha + \beta$ \\
+ $\Rightarrow S_p(A,B) < 1$, o que contradiz a hipótese inicial. \\
+ Portanto, $A \subseteq B$. \\
+ \underline{$\Leftarrow$:}\quad $A \subseteq B$ \\
+ $\Rightarrow S_p^{\cap}(A,B) = 1$ e $S_p^{\cup}(A,B) = 1$ \\
+ $\Rightarrow \alpha S_p^{\cap}(A,B) + \beta S_p^{\cup}(A,B) = \alpha + \beta$ \\
+ $\Rightarrow S_p(A,B)=1$ \\
+ \item $S(X,\emptyset)=0$ \\
+ $S_p^{\cap}(X,\emptyset) = 0$ e $S_p^{\cup}(X,\emptyset) = 0$ \\
+ $\Rightarrow S(X,\emptyset)=\frac{\alpha \cdot 0 + \beta \cdot 0}{\alpha + \beta} = 0$ \\
+ \item Se $A \subseteq B \subseteq C$, então $S(C,A) \leq S(B,A)$ e $S(C,A) \leq S(C,B)$ \\
+ $A \subseteq B \subseteq C \Rightarrow S_p^{\cap}(C,A) \leq S_p^{\cap}(B,A)$ e $S_p^{\cup}(C,A) \leq S_p^{\cup}(B,A)$ \\
+ $\Rightarrow \alpha S_p^{\cap}(C,A) + \beta S_p^{\cup}(C,A) \leq \alpha S_p^{\cap}(B,A) + \beta S_p^{\cup}(B,A)$ \\
+  $\Rightarrow S_p(C,A) \leq S_p(B,A)$ \\
+  Similarmente temos que $S_p(C,A) \leq S_p(C,B)$ \\
+\end{enumerate}
+\end{proof}
+
+\newpage
+
+\subsection{Caso 1}
+Entrada triangular quase discreta (3.4,3.5,3.6)
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada1.png}
+  \caption{Entrada do caso 1}
+  \label{fig:entrada1_comb}
+\end{figure}
+
+\begin{figure}[H]%
+    \centering
+ \hfill
+\subfigure[$\alpha = 0.9$, $\beta = 0.1$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados1_comb_09.png}}
+\hfill
+\subfigure[$\alpha = 0.7$, $\beta = 0.3$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados1_comb_07.png}}
+\hfill
+\subfigure[$\alpha = 0.5$, $\beta = 0.5$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados1_comb_05.png}}
+\hfill
+    \caption{Resultados do caso 1}%
+    \label{fig:resultados1_comb}%
+\end{figure}
+
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$0.9S_k + 0.1S_w$} & 0.094 & 0.763 & 3.203 \\
+\hline
+\textbf{$0.9S_{0.25}^{\cap} + 0.1S_{0.25}^{\cup}$} & 0.094 & 0.977 & 3.186 \\
+\hline
+\textbf{$0.9S_{0.5}^{\cap} + 0.1S_{0.5}^{\cup}$} & 0.094 & 0.911 & 3.187 \\
+\hline
+\textbf{$0.9S_{1}^{\cap} + 0.1S_{1}^{\cup}$} & 0.094 & 0.708 & 3.215 \\
+\hline
+\textbf{$0.9S_{2}^{\cap} + 0.1S_{2}^{\cup}$} & 0.094 & 0.350 & 3.532 \\
+\hline
+\textbf{$0.7S_k + 0.3S_w$} & 0.281 & 0.813 & 4.167 \\
+\hline
+\textbf{$0.7S_{0.25}^{\cap} + 0.3S_{0.25}^{\cup}$} & 0.281 & 0.981 & 4.137 \\
+\hline
+\textbf{$0.7S_{0.5}^{\cap} + 0.3S_{0.5}^{\cup}$} & 0.281 & 0.929 & 4.140 \\
+\hline
+\textbf{$0.7S_{1}^{\cap} + 0.3S_{1}^{\cup}$} & 0.281 & 0.769 & 4.184 \\
+\hline
+\textbf{$0.7S_{2}^{\cap} + 0.3S_{2}^{\cup}$} & 0.281 & 0.486 & 4.456 \\
+\hline
+\textbf{$0.5S_k + 0.5S_w$} & 0.469 & 0.863 & 4.632 \\
+\hline
+\textbf{$0.5S_{0.25}^{\cap} + 0.5S_{0.25}^{\cup}$} & 0.469 & 0.986 & 4.613 \\
+\hline
+\textbf{$0.5S_{0.5}^{\cap} + 0.5S_{0.5}^{\cup}$} & 0.469 & 0.948 & 4.616 \\
+\hline
+\textbf{$0.5S_{1}^{\cap} + 0.5S_{1}^{\cup}$} & 0.469 & 0.831 & 4.642 \\
+\hline
+\textbf{$0.5S_{2}^{\cap} + 0.5S_{2}^{\cup}$} & 0.469 & 0.623 & 4.781 \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Caso 2}
+Entrada triangular quase igual ao antecedente (0.0,3.3,4.0)
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada2.png}
+  \caption{Entrada do caso 2}
+  \label{fig:entrada2_comb}
+\end{figure}
+
+\begin{figure}[H]%
+    \centering
+ \hfill
+\subfigure[$\alpha = 0.9$, $\beta = 0.1$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados2_comb_09.png}}
+\hfill
+\subfigure[$\alpha = 0.7$, $\beta = 0.3$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados2_comb_07.png}}
+\hfill
+\subfigure[$\alpha = 0.5$, $\beta = 0.5$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados2_comb_05.png}}
+\hfill
+    \caption{Resultados do caso 2}%
+    \label{fig:resultados2_comb}%
+\end{figure}
+
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$0.9S_k + 0.1S_w$} & 0.043 & 0.930 & 2.769 \\
+\hline
+\textbf{$0.9S_{0.25}^{\cap} + 0.1S_{0.25}^{\cup}$} & 0.043 & 0.988 & 2.770 \\
+\hline
+\textbf{$0.9S_{0.5}^{\cap} + 0.1S_{0.5}^{\cup}$} & 0.043 & 0.968 & 2.770 \\
+\hline
+\textbf{$0.9S_{1}^{\cap} + 0.1S_{1}^{\cup}$} & 0.043 & 0.926 & 2.769 \\
+\hline
+\textbf{$0.9S_{2}^{\cap} + 0.1S_{2}^{\cup}$} & 0.043 & 0.841 & 2.767 \\
+\hline
+\textbf{$0.7S_k + 0.3S_w$} & 0.129 & 0.931 & 3.422 \\
+\hline
+\textbf{$0.7S_{0.25}^{\cap} + 0.3S_{0.25}^{\cup}$} & 0.129 & 0.988 & 3.420 \\
+\hline
+\textbf{$0.7S_{0.5}^{\cap} + 0.3S_{0.5}^{\cup}$} & 0.129 & 0.969 & 3.421 \\
+\hline
+\textbf{$0.7S_{1}^{\cap} + 0.3S_{1}^{\cup}$} & 0.129 & 0.927 & 3.422 \\
+\hline
+\textbf{$0.7S_{2}^{\cap} + 0.3S_{2}^{\cup}$} & 0.129 & 0.846 & 3.430 \\
+\hline
+\textbf{$0.5S_k + 0.5S_w$} & 0.214 & 0.932 & 3.876 \\
+\hline
+\textbf{$0.5S_{0.25}^{\cap} + 0.5S_{0.25}^{\cup}$} & 0.214 & 0.988 & 3.873 \\
+\hline
+\textbf{$0.5S_{0.5}^{\cap} + 0.5S_{0.5}^{\cup}$} & 0.214 & 0.969 & 3.874 \\
+\hline
+\textbf{$0.5S_{1}^{\cap} + 0.5S_{1}^{\cup}$} & 0.214 & 0.928 & 3.877 \\
+\hline
+\textbf{$0.5S_{2}^{\cap} + 0.5S_{2}^{\cup}$} & 0.214 & 0.850 & 3.889 \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Caso 3}
+Entrada triangular com pouca intersecção (3.8,4.0,5.0)
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada3.png}
+  \caption{Entrada do caso 3}
+  \label{fig:entrada3_comb}
+\end{figure}
+
+\begin{figure}[H]%
+    \centering
+ \hfill
+\subfigure[$\alpha = 0.9$, $\beta = 0.1$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados3_comb_09.png}}
+\hfill
+\subfigure[$\alpha = 0.7$, $\beta = 0.3$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados3_comb_07.png}}
+\hfill
+\subfigure[$\alpha = 0.5$, $\beta = 0.5$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados3_comb_05.png}}
+\hfill
+    \caption{Resultados do caso 3}%
+    \label{fig:resultados3_comb}%
+\end{figure}
+
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$0.9S_k + 0.1S_w$} & 0.071 & 0.102 & 4.507 \\
+\hline
+\textbf{$0.9S_{0.25}^{\cap} + 0.1S_{0.25}^{\cup}$} & 0.071 & 0.169 & 3.893 \\
+\hline
+\textbf{$0.9S_{0.5}^{\cap} + 0.1S_{0.5}^{\cup}$} & 0.071 & 0.118 & 4.322 \\
+\hline
+\textbf{$0.9S_{1}^{\cap} + 0.1S_{1}^{\cup}$} & 0.071 & 0.084 & 4.776 \\
+\hline
+\textbf{$0.9S_{2}^{\cap} + 0.1S_{2}^{\cup}$} & 0.071 & 0.077 & 4.892 \\
+\hline
+\textbf{$0.7S_k + 0.3S_w$} & 0.214 & 0.252 & 4.808 \\
+\hline
+\textbf{$0.7S_{0.25}^{\cap} + 0.3S_{0.25}^{\cup}$} & 0.214 & 0.307 & 4.585 \\
+\hline
+\textbf{$0.7S_{0.5}^{\cap} + 0.3S_{0.5}^{\cup}$} & 0.214 & 0.264 & 4.750 \\
+\hline
+\textbf{$0.7S_{1}^{\cap} + 0.3S_{1}^{\cup}$} & 0.214 & 0.236 & 4.881 \\
+\hline
+\textbf{$0.7S_{2}^{\cap} + 0.3S_{2}^{\cup}$} & 0.214 & 0.231 & 4.909 \\
+\hline
+\textbf{$0.5S_k + 0.5S_w$} & 0.357 & 0.401 & 4.884 \\
+\hline
+\textbf{$0.5S_{0.25}^{\cap} + 0.5S_{0.25}^{\cup}$} & 0.357 & 0.444 & 4.788 \\
+\hline
+\textbf{$0.5S_{0.5}^{\cap} + 0.5S_{0.5}^{\cup}$} & 0.357 & 0.411 & 4.860 \\
+\hline
+\textbf{$0.5S_{1}^{\cap} + 0.5S_{1}^{\cup}$} & 0.357 & 0.389 & 4.913 \\
+\hline
+\textbf{$0.5S_{2}^{\cap} + 0.5S_{2}^{\cup}$} & 0.357 & 0.385 & 4.924 \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Caso 4}
+Entrada triangular sem intersecção mas próxima de um dos antecedentes (4.0,4.5,5.0)
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada4.png}
+  \caption{Entrada do caso 4}
+  \label{fig:entrada4_comb}
+\end{figure}
+
+\begin{figure}[H]%
+    \centering
+ \hfill
+\subfigure[$\alpha = 0.9$, $\beta = 0.1$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados4_comb_09.png}}
+\hfill
+\subfigure[$\alpha = 0.7$, $\beta = 0.3$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados4_comb_07.png}}
+\hfill
+\subfigure[$\alpha = 0.5$, $\beta = 0.5$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados4_comb_05.png}}
+\hfill
+    \caption{Resultados do caso 4}%
+    \label{fig:resultados4_comb}%
+\end{figure}
+
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$0.9S_k + 0.1S_w$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{0.25}^{\cap} + 0.1S_{0.25}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{0.5}^{\cap} + 0.1S_{0.5}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{1}^{\cap} + 0.1S_{1}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{2}^{\cap} + 0.1S_{2}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.7S_k + 0.3S_w$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{0.25}^{\cap} + 0.3S_{0.25}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{0.5}^{\cap} + 0.3S_{0.5}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{1}^{\cap} + 0.3S_{1}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{2}^{\cap} + 0.3S_{2}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.5S_k + 0.5S_w$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{0.25}^{\cap} + 0.5S_{0.25}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{0.5}^{\cap} + 0.5S_{0.5}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{1}^{\cap} + 0.5S_{1}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{2}^{\cap} + 0.5S_{2}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Caso 5}
+Entrada triangular equidistante dos antecedentes (5.0,5.5,6.0).
+Obs: notar que os antecedentes não possuem o mesmo tamanho.
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{entrada5.png}
+  \caption{Entrada do caso 5}
+  \label{fig:entrada5_comb}
+\end{figure}
+
+\begin{figure}[H]%
+    \centering
+ \hfill
+\subfigure[$\alpha = 0.9$, $\beta = 0.1$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados5_comb_09.png}}
+\hfill
+\subfigure[$\alpha = 0.7$, $\beta = 0.3$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados5_comb_07.png}}
+\hfill
+\subfigure[$\alpha = 0.5$, $\beta = 0.5$]{\includegraphics[width=0.3\textwidth ,height=10cm]{resultados5_comb_05.png}}
+\hfill
+    \caption{Resultados do caso 5}%
+    \label{fig:resultados5_comb}%
+\end{figure}
+
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\thead{Medida} & \thead{Regra 1(vermelho)} & \thead{Regra 2(verde)} & \thead{Defuzzificaçao} \\
+\hline
+\textbf{$0.9S_k + 0.1S_w$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{0.25}^{\cap} + 0.1S_{0.25}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{0.5}^{\cap} + 0.1S_{0.5}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{1}^{\cap} + 0.1S_{1}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.9S_{2}^{\cap} + 0.1S_{2}^{\cup}$} & 0.075 & 0.080 & 4.910 \\
+\hline
+\textbf{$0.7S_k + 0.3S_w$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{0.25}^{\cap} + 0.3S_{0.25}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{0.5}^{\cap} + 0.3S_{0.5}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{1}^{\cap} + 0.3S_{1}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.7S_{2}^{\cap} + 0.3S_{2}^{\cup}$} & 0.225 & 0.240 & 4.922 \\
+\hline
+\textbf{$0.5S_k + 0.5S_w$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{0.25}^{\cap} + 0.5S_{0.25}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{0.5}^{\cap} + 0.5S_{0.5}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{1}^{\cap} + 0.5S_{1}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\textbf{$0.5S_{2}^{\cap} + 0.5S_{2}^{\cup}$} & 0.375 & 0.400 & 4.936 \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Comentários}
+
+\newpage
+
+\section{Modificadores de números fuzzy}
+
+\begin{defi}
+Um \textit{modificador fuzzy m} sobre X é uma aplicação do tipo:
+\begin{center}
+$m: \mathcal{F}(X) \rightarrow \mathcal{F}(X)$
+\end{center}
+tal que \textit{m} é dito:
+\begin{enumerate}
+\item \textit{Expansivo} se, para todo $A \in \mathcal{F}(X), A \subseteq m(A)$, ou seja, $\mu_{A}(x) \leq \mu_{m(A)}(x)$, $\forall x \in X$;
+\item \textit{Restritivo} se, para todo $A \in \mathcal{F}(X), A \supseteq m(A)$, ou seja, $\mu_{A}(x) \geq \mu_{m(A)}(x)$, $\forall x \in X$;
+\end{enumerate}
+\end{defi}
+
+\hfill
+
+\begin{prop}
+\label{procedimento}
+Considere o seguinte procedimento para construção de números fuzzy modificados:
+\begin{enumerate}
+\item Centrar A em torno de 0;
+\item Adicionar c a ambos os lados de $supp(A)$;
+\item Calcular $f = \frac{supp(A)}{supp(A^c)}$;
+\item Multiplicar todos os $\alpha$-cortes por f;
+\item Transladar o resultado de volta.
+\end{enumerate}
+Isto deve funcionar para todos os números fuzzy, menos números fuzzy crisp, que podem 
+ser vistos como números fuzzy triangulares. Para $r \in \mathds{R}$, podemos definir $r^c 
+= (r-c;r;r+c)$.
+\end{prop}
+
+\begin{exe}
+Seja o seguinte número fuzzy $A \in \mathcal{F}(\mathds{R})$:
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{numero_orig.png}
+  \caption{Número fuzzy a ser modificado.}
+  \label{fig:numero_orig}
+\end{figure}
+Com função de pertinência dada por:
+\begin{center}
+\[
+ \mu_A(x) = 
+  \begin{cases} 
+   x-2 & \text{se } 2 < x \leq 3 \\
+   4-x & \text{se } 3 < x \leq 4 \\
+   0 & \text{c.c. }
+  \end{cases}
+\]
+\end{center}
+E $\alpha$-cortes dados por:
+\begin{center}
+$A^{\alpha} = [\alpha + 2, -\alpha + 4]$
+\end{center}
+Aplicando o procedimento descrito na Proposição \cite{procedimento} (sem os passos 1 e 5), temos:
+\begin{itemize}
+%\item \textbf{Passo 1}: Centrar A em torno de 0.
+%\begin{figure}[H]
+% \centering
+%  \includegraphics[width=0.8\textwidth]{numero_center.png}
+%  \caption{Número fuzzy centrado em 0.}
+%  \label{fig:numero_center}
+%\end{figure}
+
+\item \textbf{Passo 2}: Adicionar c a ambos os lados de $supp(A')$.
+Considerando c = 1, temos:
+\begin{center}
+$supp(A') = [-1,1] \Rightarrow supp(A'^c) = [-2,2] \Rightarrow supp(A^c) = [1,5]$
+\end{center}
+
+\item \textbf{Passo 3}: Calcular $f = \frac{supp(A)}{supp(A^c)}$.
+\begin{align*}
+f &= \frac{supp(A)}{supp(A^c)} = \frac{[2,4]}{[1,5]}
+ = [2,4]\cdot [\frac{1}{5},1] \\
+ &= [\min(2 \cdot \frac{1}{5},4 \cdot \frac{1}{5},2 \cdot 1,4 \cdot 1), \max(2 \cdot \frac{1}{5},4 \cdot \frac{1}{5},2 \cdot 1,4 \cdot 1)] \\
+  &= [\frac{2}{5}, 4]
+\end{align*}
+
+\item \textbf{Passo 4}: Multiplicar todos os $\alpha$-cortes por f.
+\begin{align*}
+B^{\alpha} &= f \cdot A^{\alpha} = [\frac{2}{5}, 4] \cdot A^{\alpha} \\
+ &= [\min(\frac{2}{5} \cdot (\alpha + 2),\frac{2}{5} \cdot (-\alpha + 4),4 \cdot (\alpha + 2),4 \cdot (-\alpha + 4)),\\ &\max(\frac{2}{5} \cdot (\alpha + 2),\frac{2}{5} \cdot (-\alpha + 4),4 \cdot (\alpha + 2),4 \cdot (-\alpha + 4))] \\
+  &= [(\frac{2}{5} \cdot \alpha + \frac{4}{5}),(-4 \cdot \alpha + 16)]
+\end{align*}
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{numero_resultado.png}
+  \caption{Número fuzzy modificado.}
+  \label{fig:numero_resultado}
+\end{figure}
+\end{itemize}
+\end{exe}
+
+\newpage
+
+%%%%%%%%%%% Bibliografia
+
+\begin{thebibliography}{72}
+
+
+\bibitem{laecio} Barros, L. C. de, Bassanezi, R. C. {\it Tópicos de lógica fuzzy e biomatemática}. 
+Grupo de Biomatemática, Instituto de Matemática, Estatística e Computação Científica (IMECC), Universidade Estadual de Campinas (UNICAMP), (2006).
+
+
+\end{thebibliography}
+
+\end{document}

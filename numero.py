@@ -16,23 +16,25 @@ def getNumberFromAlphaCut(universo):
 	for alpha in np.arange(0,1,0.001):
 		pos = 0
 		for i in universo:
-			if (i>(2/5*alpha + 4/5)) and (i<(-4*alpha + 16)):
+			if (i>(2*alpha + 1)) and (i<(-2*alpha + 5)):
 				a[pos] = alpha
 			pos = pos+1
 
 	return a
 
 #Input
-inp = [2.0,3.0,4.0]
+inp = [-2.0,0.0,2.0]
 
 inpY = []
 
-universo = np.arange(0,20,0.001)
+universo = np.arange(0,10,0.001)
 
 #inpY = centralize(inp, universo)
 inpY = getNumberFromAlphaCut(universo)
+#for i in universo:
+#	inpY.append(membership.triang(i,inp[0],inp[1],inp[2]))
 
 pl.plot(universo,inpY, 'b')
-pl.axis([0, 20, 0, 1.1])
+pl.axis([0, 10, 0, 1.1])
 pl.savefig("numero_resultado.png")
 #pl.show()
