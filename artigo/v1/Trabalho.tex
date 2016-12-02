@@ -1,0 +1,388 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc} 
+%\usepackage[brazil]{babel}
+%Configuração de página.
+%\usepackage[lmargin=2.5cm, rmargin=1.5cm, tmargin=2.5cm, bmargin=1.5cm]{geometry}
+\renewcommand{\baselinestretch}{1.5}
+\usepackage[bottom=2cm,top=3cm,left=3cm,right=2cm]{geometry} %margens nas normas da ABNT
+%\usepackage{setspace} %para poder mudar o espaçamento entre as linhas
+%\usepackage{indentfirst} %pra que o primeiro parágrafo tenha o espaço certo
+\usepackage{amssymb,amsfonts,newlfont,indentfirst,subfigure}
+%\usepackage[dvips]{graphicx} %ajuda a pôr gráficos
+\usepackage[pdftex]{graphicx}
+\usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{enumerate} %para fazer itens
+\usepackage{array} %para fazer tabelas
+\usepackage{amsmath,amsfonts,amssymb} %letras estilo matemático
+%\usepackage{fancyhdr} %pra ajeitar o layout das páginas
+\usepackage{amsthm} %para mudar o estilo dos teoremas
+\usepackage{listings}
+\usepackage{caption} %para pôr legendas
+%\usepackage{subcaption} %para pôr legendas em subfiguras
+\usepackage{calligra}
+\usepackage{xcolor}
+\usepackage{makecell}
+\usepackage{soul}
+\usepackage{dsfont}
+\usepackage{subfig}
+
+\renewcommand\theadfont{\bfseries}
+
+\newtheorem{teo}{Teorema}
+\newtheorem{lema}{Lema}
+
+\theoremstyle{definition}
+\newtheorem{exe}{Exemplo}
+\newtheorem{defi}{Definição}
+\newtheorem{obs}{Observação}
+\newtheorem{prop}{Proposição}
+
+\hyphenation{com-pri-men-to} %algumas palavras são desconhecidas do Latex, mas você força ele a separá-las corretamente
+
+\begin{document}  
+%\onehalfspacing
+\thispagestyle{empty}
+{\large
+
+%%%%%%%%%%% Página 1 - Capa
+
+\begin{center}
+\textbf{UNIVERSIDADE ESTADUAL DE CAMPINAS}
+\end{center}
+
+\vspace{84pt}
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{RENATO LOPES MOURA} & \textbf{RA163050} \\
+\end{tabular}
+\end{center}
+
+\vspace{75pt}
+\begin{center}
+{\Large\textbf{Estudo sobre Inferência Fuzzy baseada em medidas de subsethood}}
+\end{center}
+
+\vfill
+
+\begin{center}
+\textbf{CAMPINAS} \\
+\textbf{2016}
+\end{center}}
+
+%%%%%%%%%%% 
+
+\newpage 
+
+\section{Definições}
+
+\begin{defi}
+ Seja uma função $S:\mathcal{F}(X)\times\mathcal{F}(X) \rightarrow [0,1]$. $S(A,B)$ é uma medida de subsethood se para $A,B,C \in \mathcal{F}(X)$ temos:
+ \begin{enumerate}
+ \item $S(A,B)=1 \Leftrightarrow A \subseteq B$ 
+ \item $S(X,\emptyset)=0$ 
+ \item Se $A \subseteq B \subseteq C$, então $S(C,A) \leq S(B,A)$ e $S(C,A) \leq S(C,B)$
+\end{enumerate}
+\end{defi}
+
+\begin{defi}
+ A medida de subsethood de Kosko é definida da seguinte forma:
+ \begin{center}
+ $S_k(A,B)=\frac{\int_{x \in X}min(\mu_A(x),\mu_B(x))}{\int_{x \in X}\mu_A(x)}$ 
+ \end{center}
+\end{defi}
+
+\begin{defi}
+ A medida de subsethood de Willmott é definida da seguinte forma:
+\begin{center}
+ $S_w(A,B)=\frac{\int_{x \in X}\mu_B(x)}{\int_{x \in X}max(\mu_A(x),\mu_B(x))}$
+\end{center}
+\end{defi}
+
+\begin{defi}
+ As medidas de subsethood $S_p^{\cap}$(meet) e $S_p^{\cup}$(join) são definidas da seguinte forma:
+\begin{center}
+ $S_p^{\cap}(A,B)=I(v_p(A),v_p(A \cap B))$,
+ \\$S_p^{\cup}(A,B)=I(v_p(A \cup B),v_p(B))$
+\end{center}
+ Onde $I$ representa uma implicação fuzzy e e $v_p$ é uma função $\mathcal{F}(X) \rightarrow [0,1]$ com $p \in (0,+\infty)$.
+ Neste trabalho, utilizaremos a implicação de Goguen:
+ \begin{center}
+ \[
+ I(x,y) = 
+  \begin{cases} 
+   1 & \text{se } x = 0 \\
+   \min(1,\frac{y}{x})       & \text{se } x > 0
+  \end{cases}
+\]
+\end{center}
+  e a seguinte função para $v_p$:
+\begin{center}
+ $v_p(A)=\sum_{i=1}^{k}\frac{1-cos(\pi[\mu_A(x_i)]^p)}{2k}, \quad X=\{x_1,...,x_k\}$
+\end{center}
+\end{defi}
+
+
+
+\newpage
+
+\section{Modificadores de números fuzzy}
+
+\begin{defi}
+Um \textit{modificador fuzzy m} sobre X é uma aplicação do tipo:
+\begin{center}
+$m: \mathcal{F}(X) \rightarrow \mathcal{F}(X)$
+\end{center}
+tal que \textit{m} é dito:
+\begin{enumerate}
+\item \textit{Expansivo} se, para todo $A \in \mathcal{F}(X), A \subseteq m(A)$, ou seja, $\mu_{A}(x) \leq \mu_{m(A)}(x)$, $\forall x \in X$;
+\item \textit{Restritivo} se, para todo $A \in \mathcal{F}(X), A \supseteq m(A)$, ou seja, $\mu_{A}(x) \geq \mu_{m(A)}(x)$, $\forall x \in X$;
+\end{enumerate}
+\end{defi}
+
+\hfill
+
+\begin{prop}
+Considere o seguinte procedimento para construção de números fuzzy modificados:
+\begin{enumerate}
+\item Centrar A em torno de 0;
+\item Adicionar c a ambos os lados de $supp(A')$;
+\item Calcular $f = \frac{width(supp(A'_c))}{width(supp(A'))}$;
+\item Multiplicar todos os $\alpha$-cortes por f;
+\item Transladar o resultado de volta.
+\end{enumerate}
+Isto deve funcionar para todos os números fuzzy, menos números fuzzy crisp, que podem 
+ser vistos como números fuzzy triangulares. Para $r \in \mathds{R}$, podemos definir $r^c 
+= (r-c;r;r+c)$.
+\label{procedimento}
+\end{prop}
+
+\begin{exe}
+Seja o seguinte número fuzzy $A \in \mathcal{F}(\mathds{R})$:
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{numero_orig.png}
+  \caption{Número fuzzy a ser modificado.}
+  \label{fig:numero_orig}
+\end{figure}
+Com função de pertinência dada por:
+\begin{center}
+\[
+ \mu_A(x) = 
+  \begin{cases} 
+   x-2 & \text{se } 2 < x \leq 3 \\
+   4-x & \text{se } 3 < x \leq 4 \\
+   0 & \text{c.c. }
+  \end{cases}
+\]
+\end{center}
+E $\alpha$-cortes dados por:
+\begin{center}
+$A^{\alpha} = [\alpha + 2, -\alpha + 4]$
+\end{center}
+Aplicando o procedimento descrito na Proposição \ref{procedimento}, temos:
+\begin{itemize}
+\item \textbf{Passo 1}: Centrar $A$ em torno de $0$.
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{numero_center.png}
+  \caption{Número fuzzy $A'$ centrado em 0.}
+  \label{fig:numero_center}
+\end{figure}
+
+\item \textbf{Passo 2}: Adicionar c a ambos os lados de $supp(A')$.
+Considerando c = 1, temos:
+\begin{center}
+$supp(A') = [-1,1] \Rightarrow supp(A'_c) = [-2,2]$
+\end{center}
+
+\item \textbf{Passo 3}: Calcular $f = \frac{width(supp(A'_c))}{width(supp(A'))}$.
+\begin{align*}
+f &= \frac{width(supp(A'_c))}{width(supp(A'))} = \frac{width([-2,2])}{width([-1,1])}
+ = \frac{4}{2} = 2
+\end{align*}
+
+\item \textbf{Passo 4}: Multiplicar todos os $\alpha$-cortes por f.
+\begin{align*}
+B'^{\alpha} &= f \cdot A'^{\alpha} = 2 \cdot A'^{\alpha} \\
+ &= 2 \cdot [\alpha - 1, -\alpha + 1] \\
+  &= [2\alpha - 2 ,-2\alpha + 2]
+\end{align*}
+
+\item \textbf{Passo 5}: Transladar o resultado de volta. \\
+Como resultado temos o seguinte número fuzzy $B \in mathcal{F}(\mathds{R})$:
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=0.8\textwidth]{numero_resultado.png}
+  \caption{Número fuzzy modificado $B$.}
+  \label{fig:numero_resultado}
+\end{figure}
+Com função de pertinência dada por:
+\begin{center}
+\[
+ \mu_B(x) = 
+  \begin{cases} 
+   \frac{x-1}{2} & \text{se } 1 < x \leq 3 \\
+   \frac{5-x}{2} & \text{se } 3 < x \leq 5 \\
+   0 & \text{c.c. }
+  \end{cases}
+\]
+\end{center}
+E $\alpha$-cortes dados por:
+\begin{center}
+$B^{\alpha} = [2\alpha + 1, -2\alpha + 5]$
+\end{center}
+
+\end{itemize}
+\end{exe}
+
+\newpage
+
+\section{Experimentos}
+\subsection{Caso 1}
+Entrada triangular quase discreta (3.4,3.5,3.6)
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados1_c1.png}
+  \caption{Resultados do caso 1 para $c=1$}
+  \label{fig:resultados1_c1}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados1_c2.png}
+  \caption{Resultados do caso 1 para $c=2$}
+  \label{fig:resultados1_c2}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados1_c5.png}
+  \caption{Resultados do caso 1 para $c=5$}
+  \label{fig:resultados1_c5}
+\end{figure}
+
+\newpage
+
+\subsection{Caso 2}
+Entrada triangular quase igual ao antecedente (0.0,3.3,4.0)
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados2_c1.png}
+  \caption{Resultados do caso 2 para $c=1$}
+  \label{fig:resultados2_c1}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados2_c2.png}
+  \caption{Resultados do caso 2 para $c=2$}
+  \label{fig:resultados2_c2}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados2_c5.png}
+  \caption{Resultados do caso 2 para $c=5$}
+  \label{fig:resultados2_c5}
+\end{figure}
+
+\newpage
+
+\subsection{Caso 3}
+Entrada triangular com pouca intersecção (3.8,4.0,5.0)
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados3_c1.png}
+  \caption{Resultados do caso 3 para $c=1$}
+  \label{fig:resultados3_c1}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados3_c2.png}
+  \caption{Resultados do caso 3 para $c=2$}
+  \label{fig:resultados3_c2}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados3_c5.png}
+  \caption{Resultados do caso 3 para $c=5$}
+  \label{fig:resultados3_c5}
+\end{figure}
+
+\newpage
+
+\subsection{Caso 4}
+Entrada triangular sem intersecção mas próxima de um dos antecedentes (4.0,4.5,5.0)
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados4_c1.png}
+  \caption{Resultados do caso 4 para $c=1$}
+  \label{fig:resultados4_c1}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados4_c2.png}
+  \caption{Resultados do caso 4 para $c=2$}
+  \label{fig:resultados4_c2}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados4_c5.png}
+  \caption{Resultados do caso 4 para $c=5$}
+  \label{fig:resultados4_c5}
+\end{figure}
+
+\newpage
+
+\subsection{Caso 5}
+Entrada triangular equidistante dos antecedentes (5.0,5.5,6.0).
+Obs: notar que os antecedentes não possuem o mesmo tamanho.
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados5_c1.png}
+  \caption{Resultados do caso 5 para $c=1$}
+  \label{fig:resultados5_c1}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados5_c2.png}
+  \caption{Resultados do caso 5 para $c=2$}
+  \label{fig:resultados5_c2}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+  \includegraphics[width=\textwidth]{resultados5_c5.png}
+  \caption{Resultados do caso 5 para $c=5$}
+  \label{fig:resultados5_c5}
+\end{figure}
+
+\newpage
+
+%%%%%%%%%%% Bibliografia
+
+\begin{thebibliography}{72}
+
+
+\bibitem{laecio} Barros, L. C. de, Bassanezi, R. C. {\it Tópicos de lógica fuzzy e biomatemática}. 
+Grupo de Biomatemática, Instituto de Matemática, Estatística e Computação Científica (IMECC), Universidade Estadual de Campinas (UNICAMP), (2006).
+
+
+\end{thebibliography}
+
+\end{document}
