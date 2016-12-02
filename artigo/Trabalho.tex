@@ -43,6 +43,8 @@
 
 \hyphenation{com-pri-men-to} %algumas palavras são desconhecidas do Latex, mas você força ele a separá-las corretamente
 
+\renewcommand*\contentsname{Sumário}
+
 \begin{document}  
 %\onehalfspacing
 \thispagestyle{empty}
@@ -75,13 +77,21 @@
 \end{center}}
 
 %%%%%%%%%%% 
+\newpage
+
+\tableofcontents
+
+%\newpage
+
+%\section{Introdução}
 
 \newpage 
 
-\section{Definições}
-
+\section{Conceitos matemáticos}
+Uma medida de \textit{subsethood} avalia o grau de "inclusão" de um conjunto \textit{fuzzy} em outro, em outras palavras é uma generalização do operador $\subseteq$ da teoria de conjuntos clássica.
+Neste trabalho adotaremos a seguinte definição de medida de \textit{subsethood} proposta por Fan \textit{et al.}\cite{Fan}:
 \begin{defi}
- Seja uma função $S:\mathcal{F}(X)\times\mathcal{F}(X) \rightarrow [0,1]$. $S(A,B)$ é uma medida de subsethood se para $A,B,C \in \mathcal{F}(X)$ temos:
+ Seja uma função $S:\mathcal{F}(X)\times\mathcal{F}(X) \rightarrow [0,1]$. $S(A,B)$ é uma medida de \textit{subsethood} se para $A,B,C \in \mathcal{F}(X)$ temos:
  \begin{enumerate}
  \item $S(A,B)=1 \Leftrightarrow A \subseteq B$ 
  \item $S(X,\emptyset)=0$ 
@@ -89,22 +99,15 @@
 \end{enumerate}
 \end{defi}
 
-\begin{defi}
- A medida de subsethood de Kosko é definida da seguinte forma:
+\hfill
+
+ Um exemplo é a medida de \textit{subsethood} de Kosko \cite{kosko} definida da seguinte forma:
  \begin{center}
  $S_k(A,B)=\frac{\int_{x \in X}min(\mu_A(x),\mu_B(x))}{\int_{x \in X}\mu_A(x)}$ 
  \end{center}
-\end{defi}
 
-\begin{defi}
- A medida de subsethood de Willmott é definida da seguinte forma:
-\begin{center}
- $S_w(A,B)=\frac{\int_{x \in X}\mu_B(x)}{\int_{x \in X}max(\mu_A(x),\mu_B(x))}$
-\end{center}
-\end{defi}
 
-\begin{defi}
- As medidas de subsethood $S_p^{\cap}$(meet) e $S_p^{\cup}$(join) são definidas da seguinte forma:
+ As medidas de \textit{subsethood} $S_p^{\cap}$(meet) e $S_p^{\cup}$(join) são definidas da seguinte forma:
 \begin{center}
  $S_p^{\cap}(A,B)=I(v_p(A),v_p(A \cap B))$,
  \\$S_p^{\cup}(A,B)=I(v_p(A \cup B),v_p(B))$
@@ -124,13 +127,62 @@
 \begin{center}
  $v_p(A)=\sum_{i=1}^{k}\frac{1-cos(\pi[\mu_A(x_i)]^p)}{2k}, \quad X=\{x_1,...,x_k\}$
 \end{center}
+
+\hfill
+
+Outra importante relação entre conjuntos \textit{fuzzy} é a medida de similaridade, que generaliza a igualdade de conjuntos da teoria de conjuntos clássica.
+Neste trabalho utilizaremos a definição mais comum de medida de similiraridade encontrada na literatura.
+\begin{defi}
+Uma função $SM:\mathcal{F}(X)\times\mathcal{F}(X) \rightarrow [0,1]$ é dita uma medida de similaridade se $SM$ satisfaz as seguintes propriedades para todos $A, B, C \in \mathcal{F}(X)$:
+\begin{enumerate}
+\item $SM(A,B) = SM(B,A)$
+\item $SM(X,\emptyset) = 0$
+\item $SM(A,A) = 1$
+\item Se $A \subseteq B \subseteq C$, então $SM(A,B) \geq SM(A,C)$ e $SM(B,C) \geq SM(A,C)$
+\end{enumerate}
 \end{defi}
 
+\hfill
 
+Uma das medidas de similaridade mais comumente utilizadas é a razão de Jaccard \cite{jaccard}, definida pela seguinte expressão:\\
+\begin{center}
+$SM(A,B) = \frac{\int_{x \in X} min(\mu_A(x),\mu_B(x))}{\int_{x \in X} max(\mu_A(x),\mu_B(x))}$\\
+\end{center}
+para $A,B \in \mathcal{F}(X)$.
+
+\hfill
+
+%Definir uma composição de relações fuzzy
+
+%Definir a regra de composição de inferência
+
+%Comentar como as relações de subsethood e similaridade podem ser utilizadas para fazer inferência
+
+%Propor a medida de subsethood com o modificador inbutido
+
+%Fazer um exemplo com a medida proposta em uma base de regras esparsa
 
 \newpage
 
-\section{Modificadores de números fuzzy}
+\section{Inferência baseada em similaridade x subsethood}
+
+%Citar o trabalho do Wagner e comentar rapidamente sobre os problemas da inferência baseada em similaridade
+
+\newpage
+
+\section{Aplicação em previsão de séries temporais}
+
+\subsection{A série caótica de Mackey-Glass}
+
+%Descrever rapidamente como a série é gerada e colocar referências
+
+\subsection{Aprendizagem de regras fuzzy}
+
+%Descrever o método de aprendizadem proposto por wang e mendel
+
+\subsection{Resultados}
+
+%Descrição dos parâmetros do experimento e comparação de resultados da inferência clássica de Mamdani(?), baseada em similaridade e baseada em subsethood utilizando as métricas MSE e MAE.
 
 \begin{defi}
 Um \textit{modificador fuzzy m} sobre X é uma aplicação do tipo:
@@ -378,10 +430,16 @@ Obs: notar que os antecedentes não possuem o mesmo tamanho.
 
 \begin{thebibliography}{72}
 
+\bibitem{Fan} J. Fan, W. Xie, and J. Pei. ?Subsethood measure: new definitions?. In: Fuzzy Sets and Systems 106.2 (Sept. 1999), pp. 201?209.
 
-\bibitem{laecio} Barros, L. C. de, Bassanezi, R. C. {\it Tópicos de lógica fuzzy e biomatemática}. 
-Grupo de Biomatemática, Instituto de Matemática, Estatística e Computação Científica (IMECC), Universidade Estadual de Campinas (UNICAMP), (2006).
+\bibitem{jaccard} P. Jaccard, Nouvelles recherches sur la distribution florale, (1908).
 
+\bibitem{kosko} B. Kosko, ?Fuzziness versus probability,? Int. J. General Syst., vol. 17, pp. 211?240, (1990).
+
+%\bibitem{laecio} Barros, L. C. de, Bassanezi, R. C. {\it Tópicos de lógica fuzzy e biomatemática}. 
+%Grupo de Biomatemática, Instituto de Matemática, Estatística e Computação Científica (IMECC), %Universidade Estadual de Campinas (UNICAMP), (2006).
+
+%\bibitem{wangmendel} L.  Wang  and  J.  M.  Mendel,  ?Generating  fuzzy  rules  by  learning  from examples? IEEE Trans. Syst., Man, Cybern., vol. 22, no. 6, pp. 1414?1427, (1992).
 
 \end{thebibliography}
 
