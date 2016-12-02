@@ -734,4 +734,4 @@ pl.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
            ncol=5, mode="expand", borderaxespad=0.)
 pl.xlabel('$t$')
 pl.ylabel('$x(t - 30)$')
-#pl.show()
+pl.show()
