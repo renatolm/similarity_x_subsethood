@@ -181,10 +181,10 @@ A série temporal de Mackey-Glass\cite{mackeyglass} é modelada pela seguinte equa
 $\frac{dx(t)}{dt} = \beta \frac{x(t - \tau)}{1 + x^n(t - \tau)} - \gamma x(t)$
 \end{center}
 Neste trabalho serão utilizados os parâmetros $\beta = 0.2$, $\gamma = 0.1$, $n = 10$ e $\tau = 30$, de forma que nestas condições a série apresenta um comportamento caótico. O estado inicial da série, ou seja, os valores de $x(t)$ para $t \in [-\tau, 0]$ é definido como $x(t) = 1.2$.
-%Descrever rapidamente como a série é gerada e colocar referências
 
 \subsection{Aprendizagem de regras fuzzy}
 
+Utilizando o procedimento descrito em \cite{wangmendel} é possível obter uma base de regras \textit{fuzzy} utilizando uma certa quantidade de pontos (antecedentes) para prever os pontos seguintes (consequentes).
 %Descrever o método de aprendizadem proposto por wang e mendel
 
 \subsection{Resultados}
@@ -443,14 +443,14 @@ Obs: notar que os antecedentes não possuem o mesmo tamanho.
 
 \bibitem{kosko} B. Kosko, {\it Fuzziness versus probability}. Int. J. General Syst., vol. 17, pp. 211-240, (1990).
 
-\bibitem{estevao} Esmi, Estevao; Sussner, Peter ; Bustince SOLA, Humberto ; Fernandez, Javier. {\it ?-Fuzzy Associative Memories (?-FAMs)}. IEEE Transactions on Fuzzy Systems, v. 23, p. 1-1, (2015). 
+\bibitem{estevao} Esmi, Estevao; Sussner, Peter ; Bustince SOLA, Humberto ; Fernandez, Javier. {\it $\theta$-Fuzzy Associative Memories ($\theta$-FAMs)}. IEEE Transactions on Fuzzy Systems, v. 23, p. 1-1, (2015). 
 
 \bibitem{mackeyglass} M.C. Mackey, L. Glass, {\it Oscillation and chaos in physiological control systems}. Science, Vol 197: 287-289, 1977
 
 %\bibitem{laecio} Barros, L. C. de, Bassanezi, R. C. {\it Tópicos de lógica fuzzy e biomatemática}. 
 %Grupo de Biomatemática, Instituto de Matemática, Estatística e Computação Científica (IMECC), %Universidade Estadual de Campinas (UNICAMP), (2006).
 
-%\bibitem{wangmendel} L.  Wang  and  J.  M.  Mendel,  ?Generating  fuzzy  rules  by  learning  from examples? IEEE Trans. Syst., Man, Cybern., vol. 22, no. 6, pp. 1414?1427, (1992).
+\bibitem{wangmendel} L.  Wang  and  J.  M.  Mendel,  {\it Generating  fuzzy  rules  by  learning  from examples}. IEEE Trans. Syst., Man, Cybern., vol. 22, no. 6, pp. 1414?1427, (1992).
 
 \end{thebibliography}
 
