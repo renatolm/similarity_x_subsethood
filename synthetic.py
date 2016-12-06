@@ -38,7 +38,7 @@ def mackey_glass(sample_len=1000, tau=17, seed=None, n_samples = 1):
             inp[timestep] = timeseries
         
         # Squash timeseries through tanh
-        inp = np.tanh(inp - 1)
+        #inp = np.tanh(inp - 1)
         samples.append(inp)
     return samples
 

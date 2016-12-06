@@ -1,5 +1,8 @@
+import sys
+sys.path.append("/home/alunos/16/163050/packages/Python-2.7.12/Include")
+
 import numpy as np
-import pylab as pl
+#import pylab as pl
 from pydelay import dde23
 import mamdani
 import similarity
@@ -725,13 +728,13 @@ print "MSE subsethood: "+str(mse_subsethood)
 
 #pl.plot(x1, x2)
 # pl.plot(range(700,1000,1),x2,'b',range(700,1000,1),x,'r--',range(700,1000,1),x3,'g--',range(700,1000,1),x4,'y--',range(700,1000,1),x5,'m--')
-pl.plot(x2,'b', label='original')
-pl.plot(x,'r--', label='mamdani')
-pl.plot(x3, 'g--', label='similaridade')
-pl.plot(x4, 'y--', label='sigma-meet')
-pl.plot(x5, 'm--', label='subsethood')
-pl.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
-           ncol=5, mode="expand", borderaxespad=0.)
-pl.xlabel('$t$')
-pl.ylabel('$x(t - 30)$')
-pl.show()
+#pl.plot(x2,'b', label='original')
+#pl.plot(x,'r--', label='mamdani')
+#pl.plot(x3, 'g--', label='similaridade')
+#pl.plot(x4, 'y--', label='sigma-meet')
+#pl.plot(x5, 'm--', label='subsethood')
+#pl.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
+#           ncol=5, mode="expand", borderaxespad=0.)
+#pl.xlabel('$t$')
+#pl.ylabel('$x(t - 30)$')
+#pl.show()
